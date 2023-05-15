@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'registration.css'%}">
+    <title>Loo konto</title>
+    {% endblock %}
+</head>
+<body>
+    {% block title %}
+    <!-- This can be used if there is two different things you want to show as a title -->
+        <!-- <div class="two-row-nav-title">
+            <h1>Loo konto</h1>
+            <p class="secondary">Siin saad sisse logida</p>
+        </div> -->
+        <h1>Loo konto</h1>
+    {% endblock %}
+    <!-- If this is empty, no options will show -->
+    {% block options %}
+        <a href="{% url 'login' %}">Logi sisse</a>
+    {% endblock %}
+
+    {% block content %}
+        <div class="main-container">
+            <div class="login-title-div">
+                <img class="login-logo" src="https://cdn-icons-png.flaticon.com/512/119/119082.png" alt="Füüsika">
+                <br>
+                <h1 class="title-font">Loo konto</h1>
+            </div>
+            {% for error in form.errors %}
+            <p></p>
+
+                <div class="popup error">{{form.errors|get_item:error}}</div>
+            {% endfor %}
+
+            <div class="login-container">
+                <div class="login-form-container">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input value="{{ form.cleaned_data|get_item:'username'}}" class="login-input" type="text" placeholder="Kasutajanimi" name="username">
+                        <br><br>
+                        <input value="{{ form.cleaned_data|get_item:'password1'}}" class="login-input" type="password" placeholder="Parool" name="password1">
+                        <input value="{{ form.cleaned_data|get_item:'password2'}}" class="login-input" type="password" placeholder="Korda parooli" name="password2">
+
+                        <br>
+                        <button class="filled login-button">Loo konto</button>
+                    </form>
+                </div>
+                <a class="login-bottom-link" href="{% url 'login' %}"><i class="material-icons">login</i> Logi sisse</a>
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

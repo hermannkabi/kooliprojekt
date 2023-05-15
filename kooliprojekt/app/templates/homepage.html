@@ -1,0 +1,40 @@
+<!-- Homepage, shown when user is notted logged in -->
+<!-- Currently a dummy -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+    <title>Füüsika | Avaleht</title>
+    {% endblock %}
+</head>
+<body>
+    {% block title %}
+        <h1>Koduleht</h1>
+    {% endblock %}
+    {% block options %}
+        <a href="{% url 'login' %}">Logi sisse</a>
+        <a href="{% url 'register' %}">Loo konto</a>
+    {% endblock %}
+
+    {% block content %}
+        <h1 class="title-font primary">Tere tulemast!</h1>
+        <p class="secondary">See on füüsika äpp</p>
+        <a href="{% url 'register' %}" class="link-button filled">Loo konto</a>
+        <a href="{% url 'login' %}" class="link-button outlined">Logi sisse</a>
+        <a href="{% url 'ui' %}" class="link-button outlined">Vaata UI komponente</a>
+        
+
+        <br><br><br>
+        <p>Seda lehte näed sellepärast, et pole sisselogitud!</p>
+        <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
+    {% endblock %}
+</body>
+</html>

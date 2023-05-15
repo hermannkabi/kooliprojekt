@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'master.css' %}">
+    {% block head %}
+        <title>Füüsika</title>
+    {% endblock %}
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">
+            <div>
+                <a class="no-style" href="/"><img src="https://cdn-icons-png.flaticon.com/512/119/119082.png" alt="" class="nav-logo"></a>
+                {% block title %}
+                    <h1>Füüsika</h1>
+                {% endblock %}
+            </div>
+
+            <div class="options">
+                {% block options %}
+                    <a href="">Valik 1</a>
+                    <a href="">Valik 2</a>
+                    <a href="">Valik 3</a>
+                {% endblock %}
+                {% if user.is_authenticated %}
+                    <a title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
+                {% endif%}
+            </div>
+        </div>
+        
+    </div>
+    <div style="height: 85px;"></div>
+
+
+    
+    {% block content %}
+
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+    <script>
+        $(".popup").click(function (e){
+            $(this).css("opacity", 0);
+            setTimeout(() => {
+                $(this).css("display", "none");
+            }, 100);
+        });
+    </script>
+</body>
+</html>

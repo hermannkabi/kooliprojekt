@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'registration.css'%}">
+    <title>Logi sisse</title>
+    {% endblock %}
+</head>
+<body>
+    {% block title %}
+        <h1>Logi sisse</h1>
+    {% endblock %}
+    <!-- If this is empty, no options will show -->
+    {% block options %}
+    <a href="{% url 'register' %}">Loo konto</a>
+    {% endblock %}
+
+    {% block content %}
+    
+        <div class="main-container">
+            
+            <div class="login-title-div">
+                <img class="login-logo" src="https://cdn-icons-png.flaticon.com/512/119/119082.png" alt="Füüsika">
+                <br>
+                <h1 class="title-font">Logi sisse</h1>
+            </div>
+            {% if form.errors %}
+                <div class="popup error">Vale kasutajanimi või parool!</div>
+            {% endif %}
+            <div class="login-container">
+                <div class="login-form-container">
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <input value="{{form.cleaned_data|get_item:'username'}}" class="login-input" type="text" placeholder="Kasutajanimi" name="username">
+                        
+                        <input class="login-input" type="password" placeholder="Parool" name="password">
+                        <br><br>
+                        <a class="forgot-password" href="">Unustasin parooli?</a>
+                        <button class="filled login-button">Logi sisse</button>
+                    </form>
+                </div>
+                <a class="login-bottom-link" href="{% url 'register' %}"><i class="material-icons">person_add</i> Loo konto</a>
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

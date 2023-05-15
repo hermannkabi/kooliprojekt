@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&display=swap');
+
+
+/* VARIABLES */
+
+:root {
+    --primary-color: 57, 72, 103;
+    /* --primary-color: 176, 218, 255; */
+
+    --background-color: 241, 246, 249;
+    --title-font: "Bebas Neue";
+    --main-font: "Atkinson Hyperlegible";
+    --outline: 1px solid rgb(var(--primary-color));
+}
+
+
+/* BODY */
+  
+body{
+    background-color: rgb(var(--background-color));
+    font-family: var(--main-font);
+    margin: 4px 16px;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+    margin: 0;
+    background-color: rgba(var(--primary-color), 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    width: 100%;
+    padding: 8px 16px;
+}
+
+.navbar h1 {
+    font-family: var(--title-font);
+}
+
+.navbar * {
+    display: inline;
+    vertical-align: middle;
+}
+
+.navbar .nav-logo {
+    user-select: none;
+    cursor: pointer;
+    margin-right: 24px;
+    max-height: 50px;
+    max-width: 50px;
+    border-radius: 8px;
+}
+
+.navbar .navbar-content{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: row;
+    
+    align-items: center;
+}
+
+.navbar .options {
+    display: inline-flex;
+    align-items:flex-end;
+    margin-right: 16px;
+}
+
+.options > a {
+    color: white;
+    margin: 0 8px;
+}
+
+.navbar .two-row-nav-title{
+    display: inline-flex;
+    flex-direction: column;
+    align-items:start;
+    margin: 0;
+}
+
+.navbar .two-row-nav-title *{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.navbar .user-text{
+    font-weight: bold;
+    display: inherit;
+}
+
+/* UI COMPONENTS */
+
+a{
+    color: rgb(var(--primary-color));
+    transition: all 200ms;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: 8px 0;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+a > i {
+    margin-right: 4px;
+}
+
+
+a:hover{
+    background-color: rgba(var(--primary-color));
+    color: white;
+    /* text-decoration: none; */
+}
+
+a:focus{
+    outline: 1px solid rgb(var(--primary-color));
+}
+
+
+button, .link-button{
+    height: 40px;
+    border-radius: 6px;
+    padding: 8px 12px;
+    border: none;
+    box-sizing: border-box;
+    transition: all 200ms;
+    font-family: var(--main-font);
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 6px;
+    margin-bottom: 7px;
+    justify-content: center;
+
+}
+
+.link-button{
+    padding: 0 12px;
+}
+
+button:hover, .link-button:hover{
+    opacity: 0.9;
+}
+
+button:focus, .link-button:focus{
+    outline: var(--outline);
+}
+
+.filled, .link-button{
+    text-decoration: none;
+    background-color: rgb(var(--primary-color));
+    color: white;
+}
+
+.outlined{
+    background-color: transparent;
+    border: 1px solid rgb(var(--primary-color));
+    color: rgb(var(--primary-color));
+}
+
+.outlined:hover{
+    background-color: rgb(var(--primary-color));
+    color: white;
+    opacity: 1;
+}
+
+
+/* Use this only with .secondary */
+.primary{
+    margin-bottom: 0;
+}
+
+.secondary{
+    margin-top: 0;
+    color: grey;
+    font-weight: 800;
+}
+
+.title-font{
+    font-family: var(--title-font);
+}
+
+input, textarea{
+    font-family: var(--main-font);
+    border: var(--outline);
+    border-radius: 6px;
+    font-size: 16px;
+    accent-color: rgb(var(--primary-color));
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+textarea{
+    resize: vertical;
+    padding: 4px 2px;
+    /* These weird numbers are actually 230 - 8 and 40 - 8 px */
+    width: 222px;
+    min-height: 32px;
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    height: 36px;    
+}
+
+/* You'll probably want to use these as blocks */
+input[type="email"], input[type="password"]{
+    display: block;
+}
+
+input:focus{
+    outline: var(--outline);
+}
+
+
+input[type="checkbox"], input[type="radio"]{
+    outline: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+label {
+    user-select: none;
+}
+
+.tooltip-container{
+    position: relative;
+    display: inline;
+}
+
+.tooltip-container > span:not(.tooltip) {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-bottom: 2px dotted rgb(var(--primary-color));
+}
+
+
+.tooltip-container .tooltip{
+    /* We use both visibility and opacity to make a fading animation but still remove the tooltip from DOM */
+    opacity: 0;
+    user-select: none;
+    max-width: 300px;
+    background-color: rgba(var(--primary-color), 0.8);
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 12px;
+    position: absolute;
+    z-index: 1;
+    top: 158%;
+    left: 0%;
+    transition: opacity 100ms linear;
+    pointer-events: none;
+    width: max-content;
+    text-align: left;
+}
+
+.tooltip-container:hover .tooltip {
+    opacity: 1;
+    user-select:all;
+    transition: opacity 100ms linear;
+}
+
+img{
+    border-radius: 6px;
+    transition: all 100ms linear;
+}
+
+img:hover{
+    opacity: 0.9;
+}
+
+
+.no-style{
+    all: unset;
+}
+
+.popup{
+    text-align: center;
+    outline: var(--outline);
+    padding: 12px 12px;
+    width: max-content;
+    max-width: 50%;
+    color: rgb(var(--primary-color));
+    text-align: center;
+    border-radius: 6px;
+    transition: all 100ms linear;
+    margin: 8px auto;
+    cursor: pointer;
+
+}
+
+.popup:hover{
+    background-color: rgba(var(--primary-color), 0.1);
+}
+
+.popup::before{
+    content: "⚠";
+    margin-right: 8px;
+}
+
+.error{
+    color: red;
+    outline-color: red;
+}

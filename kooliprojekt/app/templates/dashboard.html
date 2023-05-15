@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Oled sisse logitud, {{ user.username|title }}!</h1>
+<a href="{% url 'signout' %}" class="link-button outlined"><i class="material-icons">logout</i> Logi välja
+{% endblock %}

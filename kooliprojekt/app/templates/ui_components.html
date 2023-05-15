@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logi sisse | </title>
+</head>
+<body>
+    <!-- This isn't necessary, when ommited, uses the app's name -->
+    {% block title %}
+    <h1>UI COMPONENTS</h1>
+    {% endblock %}
+
+
+    {% block content %}
+    <div class="container">
+        <div class="popup">
+             <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor ab at blanditiis incidunt dolores cum autem cumque dolorem sed. Doloremque quidem qui omnis unde quibusdam deserunt suscipit nesciunt laudantium</span>
+        </div>
+        <div class="popup">
+            <span>Some other cum autem cumque dolorem sed. Doloremque quidem qui omnis unde quibusdam deserunt suscipit nesciunt laudantium</span>
+       </div>
+        <h1 class="primary">Heading 1</h1>
+        <h3 class="secondary">Subheading 1</h3>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, amet eaque? Accusamus sapiente vero illum labore facere porro accusantium quo?</p>
+
+        <a href="">Link</a>
+        <a href="">Link 2</a>
+        <a href=""><i class="material-icons">add</i> Icon link</a>
+        <br>
+        <br>
+        <button class="filled">Filled Button</button>
+        <button class="outlined">Outlined Button</button>
+        <div class="tooltip-container">
+            <a class="link-button" href="https://google.com">Link button</a>
+            <span class="tooltip">See nupp käitub lingina, mis on väga kasulik. Näiteks saab selle abil avada nupp uuel lehel</span>
+        </div>
+        <a class="link-button outlined" href="https://google.com">Outlined link button</a>
+
+        <button class="filled"><i class="material-icons">add</i> Icon Button</button>
+        <button class="outlined"><i class="material-icons">add</i></button>
+
+        <br>
+        <br>
+        <input type="text" placeholder="Text input">
+        <button class="filled">Search</button>
+        <br>
+        <textarea placeholder="Mitmerealine tekstikast" rows="3"></textarea>
+        <br>
+        <label><input type="checkbox">Checkbox with label</label>
+        <br>
+        <br>
+        <label><input type="radio" name="1">Radio button 1</label><br>
+        <label><input type="radio" name="1">Radio button 2</label>
+        <br><br>
+        <div class="tooltip-container">
+            <span>Hõlju kursoriga selle teksti kohal</span>
+            <span class="tooltip">Selgitus</span>
+        </div><br>
+        <div class="tooltip-container">
+            <span>või selle kohal</span>
+            <span class="tooltip">Selgitus 2</span>
+        </div>
+        <br><br>
+
+
+    </div>
+    {% endblock %}
+</body>
+</html>
