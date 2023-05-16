@@ -1,18 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&display=swap');
 
+/* RESPONSIVE CSS */
 
-/* VARIABLES */
+@media only screen and (max-width: 700px) {
+    .navbar .options{
+        display: none !important;
+    }
 
-:root {
-    --primary-color: 57, 72, 103;
-    /* --primary-color: 176, 218, 255; */
+    #mobile-hamburger{
+        display: inline !important;
+    }
 
-    --background-color: 241, 246, 249;
-    --title-font: "Bebas Neue";
-    --main-font: "Atkinson Hyperlegible";
-    --outline: 1px solid rgb(var(--primary-color));
+    .popup{
+        max-width: 80% !important;
+    }
+
+    .account-popup{
+        width: 90% !important;
+        left: 50% !important;
+        transform: translateX(-50%);
+    }
 }
-
 
 /* BODY */
   
@@ -54,12 +62,12 @@ body{
     border-radius: 8px;
 }
 
+
 .navbar .navbar-content{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     flex-direction: row;
-    
     align-items: center;
 }
 
@@ -89,6 +97,7 @@ body{
 .navbar .user-text{
     font-weight: bold;
     display: inherit;
+    cursor: pointer;
 }
 
 /* UI COMPONENTS */
@@ -137,7 +146,7 @@ button, .link-button{
     margin-top: 6px;
     margin-bottom: 7px;
     justify-content: center;
-
+    user-select: none;
 }
 
 .link-button{
@@ -178,7 +187,7 @@ button:focus, .link-button:focus{
 
 .secondary{
     margin-top: 0;
-    color: grey;
+    color: var(--secondary-color);
     font-weight: 800;
 }
 
@@ -194,13 +203,14 @@ input, textarea{
     accent-color: rgb(var(--primary-color));
     margin-top: 6px;
     margin-bottom: 6px;
+    width: auto;
 }
 
 textarea{
     resize: vertical;
     padding: 4px 2px;
     /* These weird numbers are actually 230 - 8 and 40 - 8 px */
-    width: 222px;
+    width: auto;
     min-height: 32px;
 }
 
@@ -275,7 +285,7 @@ img:hover{
 }
 
 
-.no-style{
+.no-style, .no-style:hover{
     all: unset;
 }
 
@@ -299,11 +309,123 @@ img:hover{
 }
 
 .popup::before{
-    content: "⚠";
+    content: "ⓘ";
     margin-right: 8px;
 }
+
 
 .error{
     color: red;
     outline-color: red;
+}
+
+.error::before{
+    content: "⚠";
+}
+
+.error:hover{
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.warning{
+    color: orange;
+    outline-color: orange;
+}
+
+.warning::before{
+    content: "⚠";
+}
+
+.warning:hover{
+    background-color: rgba(255, 165, 0, 0.1);
+}
+
+dialog {
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    color: rgb(var(--primary-color));
+    text-align: start;
+}
+
+.dialog-content{
+    padding: 8px 16px;
+}
+
+#user-dialog{
+    position: absolute;
+    top: calc(-100% + 220px);
+    right: calc(-100% + 200px);
+}
+
+.material-icons{
+    user-select: none;
+}
+
+.faded-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(var(--primary-color), 0.1);
+    z-index: 0;
+    transition: opacity 100ms;
+}
+
+.account-popup{
+    z-index: 10;
+    position: absolute;
+    top: 75px;
+    right: 8px;
+    display: inline-block;
+    background-color: rgba(var(--background-color), 1);
+    padding: 0px 8px;
+    border-radius: 6px;
+}
+
+
+#user-link{
+    user-select: none;
+}
+
+.red.outlined{
+    color: var(--red-color);
+    outline-color: var(--red-color);
+    border-color: var(--red-color);
+}
+
+.red.outlined:hover{
+    color: white;
+    background-color: var(--red-color);
+}
+
+.red.filled{
+    background-color: var(--red-color);
+}
+
+.expanded{
+    width: 100%;
+}
+
+.primary-color{
+    color: rgb(var(--primary-color));
+}
+
+#mobile-hamburger{
+    display: none;
+    padding-right: 4px;
+    cursor: pointer;
+    color: white;
+    margin-right: 24px;
+}
+
+.mobile-options{
+    display: block;
+}
+
+.mobile-options * {
+    text-align: start;
+    color: white;
+    padding-left: 0;
 }

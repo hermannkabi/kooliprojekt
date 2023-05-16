@@ -1,0 +1,15 @@
+/* VARIABLES */
+
+:root {
+    --primary-color: 57, 72, 103;
+    /* --primary-color: 176, 218, 255; */
+
+    --background-color: 241, 246, 249;
+    --red-color: #E76161;
+    --secondary-color: #9BA4B5;
+    --title-font: "Bebas Neue";
+    --main-font: "Atkinson Hyperlegible";
+    --outline: 1px solid rgb(var(--primary-color));
+
+    --mobile-width: 600px;
+}

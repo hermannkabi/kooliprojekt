@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'variables.css' %}">
     <link rel="stylesheet" href="{% static 'master.css' %}">
     {% block head %}
         <title>Füüsika</title>
@@ -29,20 +30,37 @@
                     <a href="">Valik 3</a>
                 {% endblock %}
                 {% if user.is_authenticated %}
-                    <a title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
-                {% endif%}
+                    <a id="user-link" title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
+                {% else %}
+                    <a class="user-text" href="{% url 'login' %}"><i class="material-icons">login</i></a>
+                {% endif %}
             </div>
+            <a id="mobile-hamburger"><i class="material-icons">menu</i></a>
+
         </div>
-        
-    </div>
-    <div style="height: 85px;"></div>
-
-
+        <div class="mobile-options"></div>
     
+    </div>
+    <div id="top-margin"></div>
+    <div class="faded-background" id="faded-background" hidden>
+        <div class="account-popup">
+            <h1 class="primary title-font primary-color">{{user.username|default:"Nime pole"}}</h1>
+            <p class="secondary">{{user.email|default:"E-posti pole lisatud"}}</p>
+            <br><br>
+            <button class="filled expanded">Minu konto</button>
+            <a href="{% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</a>            
+        </div>
+    </div>
+   
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+    <script>
+        
+    </script>
     {% block content %}
 
     {% endblock %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+
     <script>
         $(".popup").click(function (e){
             $(this).css("opacity", 0);
@@ -50,6 +68,79 @@
                 $(this).css("display", "none");
             }, 100);
         });
+
+        // Here is the account popup logic
+
+        document.getElementById("faded-background").addEventListener("click", function (e){
+            if(e.target.id === "faded-background"){
+                $(".faded-background").css("opacity", 0);
+                setTimeout(() => {
+                    $(".faded-background").css("display", "none");
+                }, 100);
+
+            }
+        });
+
+        
+
+
+        // This logic sets the top margin below the navbar and deals with the different navbar option types
+        function detectScreenSizeChange(){
+            // Top margin
+            $("#top-margin").css("height", $(".navbar").height() + 35);
+            // Also change the account popup's top position
+            $(".account-popup").css("top", $(".navbar").height() + 25);
+
+
+            var windowWidth = $(window).width();
+            if(windowWidth > 700){
+                $(".mobile-options").css("display", "none");
+            }
+            
+        }
+        $(window).on("resize", detectScreenSizeChange);
+
+        detectScreenSizeChange();
+
+        // Responsive navbar
+        $("#mobile-hamburger").click(function (){
+            if($(".navbar .mobile-options").css("display")  != "none"){
+                // The navbar is opened
+                $(".navbar .mobile-options").css("display", "none");
+
+            }else{
+                $(".navbar .mobile-options").css("display", "block");
+                
+            }
+        });
+
+        // Initially set the mobile content and hide it
+        
+        $(".navbar .mobile-options").css("display", "none");
+
+        $(".navbar .options").children().each(function(){
+            var element = $(this).clone();
+
+            // Closes the navbar after an item is clicked
+            element.click(function (){
+                $(".navbar .mobile-options").css("display", "none");
+            });
+            
+            $(".navbar .mobile-options").append("<br><br>");
+            $(".navbar .mobile-options").append(element);
+
+        });
+
+
+        $(".user-text").click(function (){
+            $(".faded-background").css("opacity", 0);
+            $(".faded-background").css("display", "block");
+            setTimeout(() => {
+                $(".faded-background").css("opacity", 1);
+
+            }, 100);
+        });
+
     </script>
 </body>
 </html>

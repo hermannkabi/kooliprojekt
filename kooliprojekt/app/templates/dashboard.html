@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    <div class="two-row-nav-title">
+        <h1>Hõõrdejõud: staatitiline ja kinemaatiline hõõrdumine; F=(müü)n</h1>
+        <p class="secondary">Tasakaalu püsivus</p>
+    </div>
+{% endblock %}
+
 {% block content %}
-<h1>Oled sisse logitud, {{ user.username|title }}!</h1>
-<a href="{% url 'signout' %}" class="link-button outlined"><i class="material-icons">logout</i> Logi välja
+    <h1>Oled sisse logitud, {{ user.username|title }}!</h1>
+    <a href="{% url 'signout' %}" class="link-button outlined red"><i class="material-icons">logout</i> Logi välja</a>
+    <a href="{% url 'ui' %}" class="link-button filled"><i class="material-icons">open_in_new</i> UI komponendid</a>
+    <br><br><br>
+    <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
+
 {% endblock %}
