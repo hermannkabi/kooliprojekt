@@ -2,7 +2,7 @@
 
 {% block title %}
     <div class="two-row-nav-title">
-        <h1>Hõõrdejõud: staatitiline ja kinemaatiline hõõrdumine; F=(müü)n</h1>
+        <h1>Hõõrdejõud: staatitiline ja kinemaatiline hõõrdumine</h1>
         <p class="secondary">Tasakaalu püsivus</p>
     </div>
 {% endblock %}
@@ -11,7 +11,7 @@
     <h1>Oled sisse logitud, {{ user.username|title }}!</h1>
     <a href="{% url 'signout' %}" class="link-button outlined red"><i class="material-icons">logout</i> Logi välja</a>
     <a href="{% url 'ui' %}" class="link-button filled"><i class="material-icons">open_in_new</i> UI komponendid</a>
-
+    <p> \(sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\)</p>
     <br><br><br>
     <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
 

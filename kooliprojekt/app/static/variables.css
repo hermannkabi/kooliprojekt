@@ -3,13 +3,29 @@
 :root {
     --primary-color: 57, 72, 103;
     /* --primary-color: 176, 218, 255; */
-
+    --text-color: 0, 0, 0;
+    --secondary-text-color: 255, 255, 255;
     --background-color: 241, 246, 249;
-    --red-color: #E76161;
-    --secondary-color: #9BA4B5;
+    --red-color: 231,97,97;
+    --secondary-color: 155,164,181;
     --title-font: "Bebas Neue";
     --main-font: "Atkinson Hyperlegible";
     --outline: 1px solid rgb(var(--primary-color));
 
     --mobile-width: 600px;
 }
+
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        /* --primary-color: 182,234,218; */
+        --primary-color: 70,194,203;
+    
+        --background-color: 44,54,57;
+        --red-color: 231,97,97;
+        --text-color: 255, 255, 255;
+        --secondary-color: 155,164,181;
+        --title-font: "Bebas Neue";
+        --main-font: "Atkinson Hyperlegible";
+        --outline: 1px solid rgb(var(--primary-color));
+    }
+  }
