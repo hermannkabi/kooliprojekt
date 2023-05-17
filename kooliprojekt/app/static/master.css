@@ -200,6 +200,11 @@ button:focus, .link-button:focus{
     opacity: 1;
 }
 
+.disabled{
+    opacity: 0.3;
+    pointer-events: none;
+    cursor: pointer !important;
+}
 
 /* Use this only with .secondary */
 .primary{
@@ -461,4 +466,8 @@ dialog {
     text-align: start;
     color: rgb(var(--secondary-text-color));
     padding-left: 0;
+}
+
+.mjx-chtml{
+    font-size: 160% !important;
 }
