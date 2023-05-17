@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&display=swap');
 
+::selection {
+    background: var(--highlight-color);
+}
+
 /* RESPONSIVE CSS */
 
 @media only screen and (max-width: 700px) {
@@ -29,6 +33,10 @@ body{
     font-family: var(--main-font);
     margin: 4px 16px;
     color: rgb(var(--text-color));
+    transition: background-color 100ms, color 100ms;
+    -webkit-transition: background-color 100ms;
+    -o-transition: background-color 100ms;
+    -moz-transition: background-color 100ms;
 }
 
 
@@ -162,6 +170,11 @@ button, .link-button{
 
 button:hover, .link-button:hover{
     opacity: 0.9;
+    box-shadow: 0px 0px 56px 26px rgb(var(--primary-color), 0.1);
+}
+
+button:active, .link-button:active{
+    box-shadow: 0px 0px 72px 50px rgb(var(--primary-color), 0.1);
 }
 
 button:focus, .link-button:focus{
@@ -392,6 +405,7 @@ dialog {
     background-color: rgba(var(--background-color), 1);
     padding: 0px 8px;
     border-radius: 6px;
+    box-shadow: 0px 0px 76px 32px rgba(var(--shadow-color), 0.1);
 }
 
 
@@ -412,6 +426,14 @@ dialog {
 
 .red.filled{
     background-color: rgb(var(--red-color));
+}
+
+.red:hover{
+    box-shadow: 0px 0px 56px 26px rgb(var(--red-color), 0.1);
+}
+
+.red:active{
+    box-shadow: 0px 0px 72px 50px rgb(var(--red-color), 0.1);
 }
 
 .expanded{

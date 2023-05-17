@@ -48,6 +48,8 @@
             <h1 class="primary title-font primary-color">{{user.username|default:"Nime pole"}}</h1>
             <p class="secondary">{{user.email|default:"E-posti pole lisatud"}}</p>
             <br><br>
+            <label><input type="checkbox" id="dark-theme-checkbox"> Tume teema?</label>
+            
             <button class="filled expanded">Minu konto</button>
             <a href="{% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</a>            
         </div>
@@ -56,8 +58,50 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
     <script>
-        
+        // Listen to changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            const newColorScheme = event.matches ? "dark" : "light";
+            localStorage.setItem("theme", newColorScheme);
+            document.documentElement.setAttribute("data-theme", newColorScheme);
+            $("#dark-theme-checkbox").val(newColorScheme == "dark" ? true : false);
+        });
+
+        var currentTheme = "light";
+    
+        if(!localStorage.getItem("theme")){
+            // No preference
+            console.log("No theme preference set, use the preference");
+
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // dark mode
+                localStorage.setItem("theme", "dark");
+            }else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
+                //light mode
+                localStorage.setItem("theme", "light");
+            }
+            
+        }
+
+        currentTheme = localStorage.getItem("theme");
+
+        if(currentTheme == "dark"){
+            document.documentElement.setAttribute("data-theme", "dark");
+            $("#dark-theme-checkbox").prop("checked", true);
+        }
+
+        $("#dark-theme-checkbox").change(function (){
+            if ($(this).is(':checked')) {
+                localStorage.setItem("theme", "dark");
+            }else{
+                localStorage.setItem("theme", "light");
+            }
+
+            document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+
+        });
     </script>
+
+
     {% block content %}
 
     {% endblock %}
