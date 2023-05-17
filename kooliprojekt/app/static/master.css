@@ -12,11 +12,11 @@
     }
 
     .popup{
-        max-width: 80% !important;
+        max-width: 92% !important;
     }
 
     .account-popup{
-        width: 90% !important;
+        width: 92% !important;
         left: 50% !important;
         transform: translateX(-50%);
     }
@@ -48,6 +48,7 @@ body{
     width: 100%;
     padding: 8px 16px;
     transition: height 100ms;
+    z-index: 100;
 }
 
 .navbar h1 {
@@ -248,6 +249,7 @@ label {
 .tooltip-container{
     position: relative;
     display: inline;
+    z-index: 0;
 }
 
 .tooltip-container > span:not(.tooltip) {
@@ -376,13 +378,13 @@ dialog {
     height: 100%;
     width: 100%;
     background-color: rgba(var(--primary-color), 0.05);
-    z-index: 0;
+    z-index: 100;
     transition: opacity 100ms;
     scroll-behavior: none;
 }
 
 .account-popup{
-    z-index: 10;
+    z-index: 999;
     position: fixed;
     top: 75px;
     right: 8px;
