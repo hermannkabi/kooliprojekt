@@ -31,10 +31,18 @@
                     <a href="">Valik 3</a>
                 {% endblock %}
                 {% if user.is_authenticated %}
+<<<<<<< Updated upstream
                     <a id="user-link" title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
                 {% else %}
                     <a class="user-text" href="{% url 'login' %}"><i class="material-icons">login</i></a>
                 {% endif %}
+=======
+                    <a title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
+                {% else %}
+                    <a href="{% url 'login' %}"><i class="material-icons">login</i></a>
+                {% endif%}
+
+>>>>>>> Stashed changes
             </div>
             <a id="mobile-hamburger"><i class="material-icons">menu</i></a>
 
