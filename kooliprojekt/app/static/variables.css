@@ -1,11 +1,11 @@
 /* VARIABLES */
 
 :root {
-    --primary-color: 57, 72, 103;
+    --primary-color: 84,132,187;
     /* --primary-color: 176, 218, 255; */
-    --text-color: 0, 0, 0;
-    --secondary-text-color: 255, 255, 255;
-    --background-color: 241, 246, 249;
+    --text-color: 12,19,79;
+    --secondary-text-color: 241,246,249;
+    --background-color: 255,255,255;
     --red-color: 231,97,97;
     --secondary-color: 155,164,181;
     --shadow-color: 0, 0, 0;
@@ -19,10 +19,10 @@
 
 [data-theme="dark"]  {
     /* --primary-color: 182,234,218; */
-    --primary-color: 70,194,203;
-    --background-color: 44,54,57;
+    --primary-color: 165,201,202;
+    --background-color: 27,36,48;
     --red-color: 231,97,97;
-    --text-color: 255, 255, 255;
+    --text-color: 237,242,248;
     --secondary-color: 155,164,181;
     --shadow-color: 230, 242, 232;
     --highlight-color: #ABCDEF;
