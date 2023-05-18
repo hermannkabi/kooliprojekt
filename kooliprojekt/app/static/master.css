@@ -29,7 +29,7 @@
 /* BODY */
   
 body{
-    background-color: rgb(var(--background-color));
+    background: rgb(var(--background-color));
     font-family: var(--main-font);
     margin: 4px 16px;
     color: rgb(var(--text-color));
@@ -231,6 +231,10 @@ input, textarea{
     margin-bottom: 6px;
     width: auto;
     color: rgb(var(--primary-color));
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(rgb(var(--background-color)), 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 textarea{

@@ -56,6 +56,13 @@
             <a href="{% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</a>            
         </div>
     </div>
+
+    <div id="cursor-effect" style="position: absolute; z-index: -50; height: 100px; width: 100px; background-color: rgb(var(--primary-color)); border-radius: 100%;
+    filter: blur(40px);
+    opacity: 0.2;
+    ">
+
+    </div>
    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
@@ -101,6 +108,15 @@
             document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
 
         });
+    </script>
+
+
+    <script>
+        $(document).mousemove(function(event) {
+            $("#cursor-effect").css("top", event.pageY - 50);
+            $("#cursor-effect").css("left", event.pageX - 50);
+        });
+
     </script>
 
 
