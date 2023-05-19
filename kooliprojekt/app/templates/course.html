@@ -1,1 +1,28 @@
-<p>Hello wikds</p>
+{% extends 'base.html' %}
+
+{% block title %}
+    <div class="two-row-nav-title">
+        <h1>Vali tund</h1>
+        <p class="secondary">{{ course|title }}</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="lesson-container" >
+        {% for lesson in lessons %}
+        <a href="{% url 'lesson' id=lesson.id %}" class="no-style" style="display: flex; justify-content: center;">
+            <div class="lesson-link {% if lesson in completedLessons %}lesson-completed{% endif%}">
+                <h3>{{ lesson.title }} </h3>
+                {% if lesson in completedLessons %}
+                    <i style="margin-left: 16px;" class="material-icons">check_circle</i>
+                {% endif%}
+            </div>
+        </a>
+
+        {% empty %}
+            <h1 class="primary">Vabandust, tunde ei leitud!</h1>
+            <p class="secondary">Palun proovige uuesti!</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

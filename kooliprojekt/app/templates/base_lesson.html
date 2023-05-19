@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'lesson.css' %}">
+{% endblock %}
+
+{% block title %}
+<div class="two-row-nav-title">
+    <h1>{{ lesson.title }}</h1>
+    <p class="secondary">{{ course.title }}</p>
+</div>
+{% endblock %}
+
+
+{% block content %}
+ 
+    <div class="lesson-content">
+        {% block lesson %}
+        
+        {% endblock%}
+    </div>
+    <br><br><br>
+    <div class="lesson-end">
+        <button class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
+    </div>
+{% endblock %}

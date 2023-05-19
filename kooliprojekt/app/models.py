@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Course(models.Model):
     title = models.CharField(max_length = 200)
     kasutajad = models.ManyToManyField(User)
+    image = models.TextField()
     def __str__(self):
         return self.title
 
@@ -17,7 +18,7 @@ class Lesson(models.Model):
         return self.title
 
 class LessonCompleted(models.Model):
-    lesson = models.OneToOneField(Lesson, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     user = models.ManyToManyField(User)
     def __str__(self):
         return str(self.lesson)

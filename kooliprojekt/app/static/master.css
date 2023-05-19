@@ -26,6 +26,22 @@
     }
 }
 
+@media only screen and (max-width: 1400px) {
+    .course-cards{grid-template-columns: repeat(4, 1fr) !important;}
+}
+
+@media only screen and (max-width: 1100px) {
+    .course-cards{grid-template-columns: repeat(3, 1fr) !important;}
+}
+
+@media only screen and (max-width: 900px) {
+    .course-cards{grid-template-columns: repeat(2, 1fr) !important;}
+}
+
+@media only screen and (max-width: 700px) {
+    .course-cards{grid-template-columns: repeat(1, 1fr) !important;}
+}
+
 /* BODY */
   
 body{
@@ -171,11 +187,11 @@ button, .link-button{
 
 button:hover, .link-button:hover{
     opacity: 0.9;
-    box-shadow: 0px 0px 56px 26px rgb(var(--primary-color), 0.1);
+    box-shadow: 0px 0px 56px 26px rgb(var(--primary-color), 0.2);
 }
 
 button:active, .link-button:active{
-    box-shadow: 0px 0px 72px 50px rgb(var(--primary-color), 0.1);
+    box-shadow: 0px 0px 72px 50px rgb(var(--primary-color), 0.2);
 }
 
 button:focus, .link-button:focus{
@@ -232,7 +248,7 @@ input, textarea{
     width: auto;
     color: rgb(var(--primary-color));
     background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(rgb(var(--background-color)), 0.1);
+    box-shadow: 0 4px 30px rgba(rgb(var(--background-color)), 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
@@ -324,6 +340,7 @@ img:hover{
 
 .no-style, .no-style:hover{
     all: unset;
+    border-radius: 6px;
 }
 
 .popup{
@@ -479,4 +496,68 @@ dialog {
 
 .mjx-chtml{
     font-size: 160% !important;
+}
+
+.course-cards{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.course{
+    background-color: rgb(var(--primary-color), 0.2);
+    margin: 8px;
+    border-radius: 6px;
+    transition: all 100ms;
+    cursor: pointer;
+}
+
+.course:hover{
+    opacity: 0.9;
+    transform: translateY(-2px);
+    -webkit-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color), 0.75);
+    -moz-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.75);
+    box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.75);
+}
+
+.course:focus{
+    border-radius: 6px;
+    outline: var(--outline);
+}
+
+.course > img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.course > h3 {
+    margin: 12px 8px;
+    padding-bottom: 8px;
+
+}
+
+.lesson-link{
+    display:block;
+    background-color: rgb(var(--primary-color), 0.2);
+    border-radius: 6px;
+    margin: 8px;
+    padding: 4px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    overflow: hidden;
+    cursor: pointer;
+    width: min(90%, 500px);
+    transition: all 100ms;
+}
+
+
+.lesson-link:hover{
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.lesson-completed{
+    color: lightgreen;
 }

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from django.contrib.auth import authenticate, logout as django_logout, login, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.template.defaulttags import register
@@ -50,9 +50,24 @@ def logout(request):
     return redirect("/")
 
 def course(request, id):
-    lessons=Lesson.objects.filter(course__id=id)
+    lessons = Lesson.objects.filter(course__id=id)
+    completed = LessonCompleted.objects.filter(Q(user=request.user) & Q(lesson__in=lessons))
     context = {}
     context["lessons"] = lessons
-    context["completedlessons"] = LessonCompleted.objects.filter(Q(user=request.user) & Q(lesson=lessons))
+    context["completed"] = completed
+    context["completedLessons"] = [x.lesson for x in completed]
+    context["course"] = Course.objects.get(pk=id)
     print(context)
     return render(request, "course.html",context)
+
+
+def lesson(request, id):
+
+    context = {}
+
+    lesson = get_object_or_404(Lesson, pk=id)
+
+    context["lesson"] = lesson
+    context["course"] = lesson.course
+
+    return render(request, "lessons/"+lesson.lesson+".html", context)

@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    <div class="two-row-nav-title">
-        <h1>Hõõrdejõud: staatitiline ja kinemaatiline hõõrdumine</h1>
-        <p class="secondary">Tasakaalu püsivus</p>
-    </div>
-{% endblock %}
 
 {% block content %}
-    <h1>Oled sisse logitud, {{ user.username|title }}!</h1>
-    <a href="{% url 'signout' %}" class="link-button outlined red"><i class="material-icons">logout</i> Logi välja</a>
-    <a href="{% url 'ui' %}" class="link-button filled"><i class="material-icons">open_in_new</i> UI komponendid</a>
-    <p> \(sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}\)</p>
+    <h1>Minu kursused</h1>
+    <div class="course-cards">
+        {% for course in courses %}
+        <a href="{% url 'course' id=course.id %}" class="no-style">
+            <div class="course">
+                <img src="{{ course.image }}" alt="Pilt">
+                <h3>{{course.title|title }}</h3>
+            </div>
+        </a>
+            
+        {% endfor %}
+    </div>
     <br><br><br>
     <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
 

@@ -1,0 +1,43 @@
+.lesson-content{
+    text-align: center;
+    font-size: 20px;
+    width: min(600px, 95%);
+    margin: auto;
+}
+
+.lesson-content ul,ol {
+    display: inline-block;
+    text-align: start;
+    margin: 8px auto;
+}
+
+.lesson-content td, th{
+    outline: 1px solid rgb(var(--primary-color));
+    padding: 4px;
+}
+
+.lesson-content thead{
+    background-color: rgba(var(--primary-color), 0.4);
+}
+
+.lesson-content table{
+    margin: auto;
+}
+
+.lesson-content h1,h2,h3,h4,h5,h6{
+    font-family: var(--title-font);
+}
+
+img{
+    max-height: 400px;
+    max-width: 90%;
+}
+
+.mjx-chtml{
+    font-size: 24px !important;
+}
+
+.lesson-end{
+    display: flex;
+    justify-content: center;
+}
