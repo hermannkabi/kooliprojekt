@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, logout as django_logout, login, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.template.defaulttags import register
+from .models import Course, Lesson,LessonCompleted
+from django.http import HttpResponse
+from django.db.models import Q
 
 @register.filter
 def get_item(dictionary, key):
@@ -15,9 +18,11 @@ def get_item(dictionary, key):
 def index(request):
     if not request.user.is_authenticated:
         return render(request, "homepage.html")
-    
-    return render(request, "dashboard.html")
-    
+    context = {}
+    courses=Course.objects.filter(kasutajad = request.user)
+    context["courses"] = courses
+    return render(request, "dashboard.html",context)
+
 
 def ui(request):
     return render(request, "ui_components.html")
@@ -43,3 +48,11 @@ def register(request):
 def logout(request):
     django_logout(request)
     return redirect("/")
+
+def course(request, id):
+    lessons=Lesson.objects.filter(course__id=id)
+    context = {}
+    context["lessons"] = lessons
+    context["completedlessons"] = LessonCompleted.objects.filter(Q(user=request.user) & Q(lesson=lessons))
+    print(context)
+    return render(request, "course.html",context)
