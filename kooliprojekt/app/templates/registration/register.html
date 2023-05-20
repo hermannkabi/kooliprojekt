@@ -26,7 +26,7 @@
     {% block content %}
         <div class="main-container">
             <div class="login-title-div">
-                <img class="login-logo" src="https://cdn-icons-png.flaticon.com/512/119/119082.png" alt="Füüsika">
+                <img class="login-logo" src="{% static 'logo.png' %}" alt="Füüsika">
                 <br>
                 <h1 class="title-font">Loo konto</h1>
             </div>
@@ -41,6 +41,8 @@
                     <form action="" method="post">
                         {% csrf_token %}
                         <input value="{{ form.cleaned_data|get_item:'username'}}" class="login-input" type="text" placeholder="Kasutajanimi" name="username">
+                        <input value="{{ form.cleaned_data|get_item:'email'}}" class="login-input" type="email" placeholder="E-posti aadress" name="email">
+                        
                         <br><br>
                         <input value="{{ form.cleaned_data|get_item:'password1'}}" class="login-input" type="password" placeholder="Parool" name="password1">
                         <input value="{{ form.cleaned_data|get_item:'password2'}}" class="login-input" type="password" placeholder="Korda parooli" name="password2">

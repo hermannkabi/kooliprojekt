@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{course.title}}</title>
+{% endblock %}
+
+{% block title %}
+    <h1>{{course.title}}</h1>
+{% endblock %}
+
+
+{% block content %}
+    <div class="add-content">
+        <img src="{{course.image}}" alt="{{course.title}}">
+        <h1 class="title-font primary">{{course.title}}</h1>
+        <p class="secondary">{{lessonCount}} tund{{ lessonCount|pluralize:"i" }}</p>
+        <br>
+        <p>{{course.description}}</p>
+        <br><br>
+        <form action="{% url 'registerToCourse' id=course.id %}" method="POST">
+            {% csrf_token %}
+            <button class="filled">Registreeru kursusele</button>
+        </form>
+    </div>
+{% endblock %}

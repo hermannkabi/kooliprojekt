@@ -1,21 +1,40 @@
 {% extends 'base.html' %}
 
+{% block options %}
+    <a href="{% url 'addCourse' %}">Lisa kursus</a>
+{% endblock %}
 
 {% block content %}
+    {% if message %}
+    <div class="popup" id="message-popup">
+        <span>{{message}}</span>
+    </div>
+    {% endif %}
     <h1>Minu kursused</h1>
     <div class="course-cards">
-        {% for course in courses %}
-        <a href="{% url 'course' id=course.id %}" class="no-style">
-            <div class="course">
-                <img src="{{ course.image }}" alt="Pilt">
-                <h3>{{course.title|title }}</h3>
+        {% for course in courses reversed %}
+            <a href="{% url 'course' id=course.id %}" class="no-style">
+                <div class="course">
+                    <img src="{{ course.image }}" alt="Pilt">
+                    <h3 style="padding-bottom: 16px;">{{course.title }}</h3>
+                </div>
+            </a>
+        {% empty %}
+            <div>
+                <p class="primary">Sul pole veel ühtegi kursust!</p><br>
+                <a href="{% url 'addCourse' %}" class="link-button filled"><i class="material-icons">add</i> Lisa kursus</a>
+    
             </div>
-        </a>
-            
         {% endfor %}
     </div>
     <br><br><br>
     <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
 
+
+    <script>
+        setTimeout(() => {
+            $("#message-popup").click();
+        }, 5000);
+    </script>
 {% endblock %}
 

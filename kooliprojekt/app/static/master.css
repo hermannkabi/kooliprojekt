@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bebas+Neue&family=Lora:ital@1&display=swap');
 
 ::selection {
     background: var(--highlight-color);
@@ -509,14 +509,15 @@ dialog {
     border-radius: 6px;
     transition: all 100ms;
     cursor: pointer;
+    height: 90%;
 }
 
 .course:hover{
     opacity: 0.9;
     transform: translateY(-2px);
-    -webkit-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color), 0.75);
-    -moz-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.75);
-    box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.75);
+    -webkit-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color), 0.3);
+    -moz-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.3);
+    box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.3);
 }
 
 .course:focus{
@@ -526,7 +527,7 @@ dialog {
 
 .course > img {
     width: 100%;
-    max-height: 150px;
+    height: 150px;
     object-fit: cover;
 }
 
@@ -541,23 +542,52 @@ dialog {
     background-color: rgb(var(--primary-color), 0.2);
     border-radius: 6px;
     margin: 8px;
-    padding: 4px 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    overflow: hidden;
     cursor: pointer;
     width: min(90%, 500px);
     transition: all 100ms;
 }
 
+.lesson-link > img{
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    margin: 0;
+    text-align: center;
+}
+
+.lesson-text{
+    padding: 4px 16px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    overflow: hidden;
+}
 
 .lesson-link:hover{
     opacity: 0.9;
     transform: translateY(-1px);
+    -webkit-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color), 0.3);
+    -moz-box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.3);
+    box-shadow: 0px 0px 50px -10px rgba(var(--primary-color),0.3);
+
 }
 
 .lesson-completed{
     color: lightgreen;
+    opacity: 0.9;
+}
+
+.add-content{
+    text-align: center;
+    margin: auto;
+    width: min(600px, 95%);
+}
+
+.add-content img{
+    max-height: 200px;
+    max-width: min(300px, 90%);
+}
+
+.add-content p {
+    font-size: 20px;
 }

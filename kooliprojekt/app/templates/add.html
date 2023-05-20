@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Lisa kursus</h1>
+
+<div class="course-cards">
+    {% for course in all_courses %}
+        <a href="{% url 'coursePreview' id=course.id %}" class="no-style">
+            <div class="course {% if course in owned_by_user %}lesson-completed{% endif %}">
+                <img src="{{ course.image }}" alt="Pilt">
+                <h3 style="padding-bottom: 16px;">{{course.title }}</h3>
+            </div>
+        </a>
+
+    {% empty %}
+        <p>Kursuseid, mida sa juba ei omaks, ei leitud!</p>
+    {% endfor %}
+</div>
+{% endblock %}

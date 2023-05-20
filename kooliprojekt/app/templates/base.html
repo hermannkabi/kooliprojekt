@@ -13,12 +13,13 @@
     {% block head %}
         <title>Füüsika</title>
     {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{% static 'logo.png' %}">
 </head>
 <body>
     <div class="navbar">
         <div class="navbar-content">
             <div>
-                <a class="no-style" href="/"><img src="https://cdn-icons-png.flaticon.com/512/119/119082.png" alt="" class="nav-logo"></a>
+                <a class="no-style" href="/"><img src="{% static 'logo.png' %}" alt="" class="nav-logo"></a>
                 {% block title %}
                     <h1>Füüsika</h1>
                 {% endblock %}
@@ -26,9 +27,6 @@
 
             <div class="options">
                 {% block options %}
-                    <a href="">Valik 1</a>
-                    <a href="">Valik 2</a>
-                    <a href="">Valik 3</a>
                 {% endblock %}
                 {% if user.is_authenticated %}
                     <a id="user-link" title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
@@ -67,6 +65,34 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
     <script>
+        function detectTheme(){
+            var currentTheme = "light";
+
+            if(!localStorage.getItem("theme")){
+                // No preference
+                console.log("No theme preference set, use the preference");
+
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    // dark mode
+                    localStorage.setItem("theme", "dark");
+                }else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
+                    //light mode
+                    localStorage.setItem("theme", "light");
+                }
+                
+            }
+
+            currentTheme = localStorage.getItem("theme");
+
+            if(currentTheme == "dark"){
+                document.documentElement.setAttribute("data-theme", "dark");
+                $("#dark-theme-checkbox").prop("checked", true);
+            }else{
+                document.documentElement.setAttribute("data-theme", "light");
+                $("#dark-theme-checkbox").prop("checked", false);
+            }
+        }
+        
         // Listen to changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
             const newColorScheme = event.matches ? "dark" : "light";
@@ -75,28 +101,18 @@
             $("#dark-theme-checkbox").val(newColorScheme == "dark" ? true : false);
         });
 
-        var currentTheme = "light";
-    
-        if(!localStorage.getItem("theme")){
-            // No preference
-            console.log("No theme preference set, use the preference");
-
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // dark mode
-                localStorage.setItem("theme", "dark");
-            }else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches){
-                //light mode
-                localStorage.setItem("theme", "light");
+        window.addEventListener( "pageshow", function ( event ) {
+            var historyTraversal = event.persisted || 
+                                    ( typeof window.performance != "undefined" && 
+                                        window.performance.navigation.type === 2 );
+            if ( historyTraversal ) {
+                // Handle page restore.
+                detectTheme();
             }
-            
-        }
+        });
 
-        currentTheme = localStorage.getItem("theme");
-
-        if(currentTheme == "dark"){
-            document.documentElement.setAttribute("data-theme", "dark");
-            $("#dark-theme-checkbox").prop("checked", true);
-        }
+    
+        detectTheme();
 
         $("#dark-theme-checkbox").change(function (){
             if ($(this).is(':checked')) {

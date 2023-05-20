@@ -3,6 +3,7 @@
     font-size: 20px;
     width: min(600px, 95%);
     margin: auto;
+    line-height: 150%;
 }
 
 .lesson-content ul,ol {
@@ -26,6 +27,7 @@
 
 .lesson-content h1,h2,h3,h4,h5,h6{
     font-family: var(--title-font);
+    line-height: 100%;
 }
 
 img{
@@ -40,4 +42,48 @@ img{
 .lesson-end{
     display: flex;
     justify-content: center;
+}
+
+.lesson-content a{
+    all: unset;
+    cursor: pointer;
+    color: rgba(var(--primary-color), 1);
+    text-decoration: underline;
+    transition: background-color 100ms;
+    padding: 2px 4px;
+}
+
+
+blockquote{
+    text-align: start;
+    font-family: "Lora", serif;
+    color: rgb(var(--secondary-color));
+    margin-bottom: 60px;
+}
+
+blockquote::before{
+    content: '"';
+    font-size: 80px;
+    color: rgb(var(--secondary-color));
+    font-family: "Lora", serif;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+    bottom: -40px;
+    left: -24px;
+}
+
+blockquote > i::before{
+    content: "― ";
+}
+
+
+code{
+    background-color: rgba(var(--secondary-color), 0.6);
+    border-radius: 6px;
+}
+
+code.block{
+    display: block;
+    text-align: start;
 }

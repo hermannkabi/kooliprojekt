@@ -1,0 +1,74 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+{% block lesson %}
+<h1 class="primary">Materjalid tunni koostamiseks</h1>
+<p class="secondary">Siin asuvad materjalid, kuidas sellele veebilehele sisu luua.</p>
+<br>
+<p>Alustamiseks logi sisse admin kasutajana ja lisa uus tund. Sinna saad panna tunni pealkirja, kursuse, millega tund seotakse, lingi tunni pildile (pole kohustuslik). Lesson lahtrisse tuleb kirjutada faili nimi, kus tund kirjutatakse (ilma laienduseta). Käesoleval juhul on seal test_lesson, sest faili nimi on test_lesson.html. Vaata allolevat pilti:
+</p>
+<img src="{% static 'lessons/test_image.png' %}" alt="Tekst, mis ilmub, kui pilti ei suudeta laadida">
+<p>
+Järgmiseks tuleb fail luua. Selleks mine kausta <code>templates/lessons/KURSUSE_ID</code> ja tee sinna uus HTML-fail. Faili nimi peab ühtima enne lesson väljale salvestatud nimega. 
+</p>
+ 
+<h2>Tunni kirjutamine</h2>
+<p>Olenevalt oskusest, soovist õppida HTMLi ja vaba aja hulgast, pakun välja kaks võimalust:</p>
+
+<h3>1. Kirjuta ise HTML kood</h3>
+<p>See on tegelikult suhteliselt lihtne ja loomulik protsess. Abi saad Google'st, W3Schools lehelt ja loomulikult StackOverflowst. Tegin stiilide lisamise võimalikult lihtsaks, st CSSi (fonti, värvi, suurust jne jne) ise muutma ei pea. HTML kood koosneb <i>tag</i>'idest, mille abil on võimalik kujutada teksti, pilte, tabeleid, loendeid jne. Tagi süntaks on: <code>&lt;tag&gt;Siia vahele kirjutatud teksti kuvatakse tag'i moodi&lt;/tag&gt;</code>. Näiteks kui soovitakse kirjutada 1. taseme (kõige suuremat) pealkirja, siis kasutatakse tag'i h1 (heading 1). <code>&lt;h1&gt;Suur pealkiri&lt;/h1&gt;</code>. Välja näeb see selline:
+<h1>Suur pealkiri</h1>
+Nagu näha, tehti värvi, fondi, suuruse, paigutuse ja kõige muu kohta otsus ära ilma, et me oleks pidanud midagi selle kohta kirjutama (õigemini see on CSS koodis kirjas, aga see pole oluline). Mõned tag'id, mis kindlasti kasuks tulevad:
+<table>
+    <thead>
+        <th>Tag</th>
+        <th>Kirjeldus</th>
+        <th>Näide</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>hN</td>
+            <td>N on täisarv 1-6. Pealkiri (1 - kõige suurem)</td>
+            <td>&lt;h1&gt;Pealkiri siia&lt;/h1&gt;</td>
+        </tr>
+        <tr>
+            <td>p</td>
+            <td>Loob lõigu (paragraph)</td>
+            <td>&lt;p&gt;Siia tuleb tekst&lt;/p&gt;</td>
+        </tr>
+        <tr>
+            <td>br</td>
+            <td>Vertikaalne vahe (kasutatakse ilma lõpu tagita)</td>
+            <td>&lt;br&gt;</td>
+        </tr>
+        <tr>
+            <td>img</td>
+            <td>Pilt (obviously)</td>
+            <td>&lt;img src="Pildi allikas" alt="Tekst, mis ilmub, kui pilti ei suudeta laadida"&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<b>NB! VS Code on suhteliselt tark, kui luua HTML-fail, siis piisab, kui kirjutada tagi nimi ja vajutada <kbd>Enter</kbd>, siis luuakse vastavalt tagile õige süntaks</b>
+
+</p>
+<h3>2. Kasuta mõnda abivahendit</h3>
+<p>Proovisin korra mõnda erinevat tekstiredaktorit ja kõige rohkem meeldis mulle <a href="https://onlinehtmleditor.dev/">see</a>. Seal saab kasutajaliidesega kirjutada sisuliselt HTML-koodi. Saab lisada pilte, tabeleid jne. Kui tund on valmis, vajuta Switch to HTML editor ja kopeeri kood faili. Soovitan soojalt proovida vähemalt mõne tunni HTMLi ise kirjutada, siis saad öelda, et oled midagi ka sellest projektist õppinud</p>
+
+<b>NB!! Oluline, ükskõik, kumba meetodit kasutad, tuleb enne HTMLi sisestamist faili kopeerida järgnev:</b><br>
+<code class="block">
+    {&percnt; extends 'base.html' &percnt;} <br>
+    {&percnt; load static &percnt;} <br><br>
+
+    {&percnt; block lesson &percnt;} <br>
+    &lt;!-- Kood kirjuta selle ploki sisse --&gt; <br>
+    {&percnt; endblock &percnt;}
+</code><br><br>
+
+<p>Lõpetuseks üks tsitaat ka:</p>
+<blockquote>
+    <p>Confusion is a part of programming.</p>
+    <i>Felienne Hermans</i>
+</blockquote>
+<h2>Head kirjutamist!</h2>
+
+
+{% endblock %}

@@ -2,13 +2,14 @@
 {% load static %}
 
 {% block head %}
+    <title>{{lesson.title}} | {{course.title}}</title>
     <link rel="stylesheet" href="{% static 'lesson.css' %}">
 {% endblock %}
 
 {% block title %}
 <div class="two-row-nav-title">
     <h1>{{ lesson.title }}</h1>
-    <p class="secondary">{{ course.title }}</p>
+    <p style="cursor: pointer;" onclick="window.location.href = '{% url 'course' id=course.id %}'" class="secondary">{{ course.title }}</p>
 </div>
 {% endblock %}
 
@@ -22,6 +23,16 @@
     </div>
     <br><br><br>
     <div class="lesson-end">
-        <button class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
+        {% if not isComplete %}
+        <form action="{% url 'finishLesson' id=lesson.id %}" method="post">
+            {% csrf_token %}
+            <button onclick="finishLesson()" class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
+            
+        </form>
+        {% else %}
+            <i>See tund on juba lõpetatud!</i>
+            
+        {% endif %}
     </div>
+    <br><br>
 {% endblock %}
