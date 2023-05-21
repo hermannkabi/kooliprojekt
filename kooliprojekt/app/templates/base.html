@@ -51,8 +51,8 @@
             <br><br>
             <label><input type="checkbox" id="dark-theme-checkbox"> Tume teema?</label>
             
-            <button class="filled expanded">Minu konto</button>
-            <a href="{% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</a>            
+            <a href="{% url 'profile' username=user.username %}" class="link-button filled expanded">Minu konto</a>
+            <button onclick="window.location.href = {% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</button>            
         </div>
     </div>
 

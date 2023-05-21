@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: 23, 141, 209;
-    /* --primary-color: 176, 218, 255; */
+    --primary-color: 69, 86, 115;
     --text-color: 12,19,79;
     --secondary-text-color: 241,246,249;
     --background-color: 255,255,255;
@@ -18,13 +18,13 @@
 }
 
 [data-theme="dark"]  {
-    --primary-color: 240, 195, 105;
+    --primary-color: 80, 155, 250;
     /* --primary-color: 165,201,202; */
-    --background-color: 69, 69, 69;
+    --background-color: 32, 49, 69;
     --red-color: 231,97,97;
     --text-color: 223, 240, 237;
-    --secondary-color: 115, 113, 104;
-    --secondary-text-color: 115, 54, 0;
+    --secondary-color: 152, 157, 163;
+    --secondary-text-color: 13, 40, 74;
     --shadow-color: 230, 242, 232;
     --highlight-color: #ABCDEF;
     --title-font: "Bebas Neue";

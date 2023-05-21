@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <title>{{ user.username|title }} | Füüsika</title>
+{% endblock %}
+
+{% block title %}
+    <h1>{{ user.username|title }}</h1>
+{% endblock %}
+
+{% block content %}
+    <h1>Hei!</h1>
+    <p>Siia lehele tuleb kasutaja leht, kui leht on sisselogitud kasutajast, saab teatud andmeid ka muuta</p>
+{% endblock %}

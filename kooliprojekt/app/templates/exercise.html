@@ -1,0 +1,32 @@
+<div class="question" question-id="{{question.id}}">
+    <div class="question-card-front">
+        <p>{{question.description}}</p>
+        <h2>{{question.question}}</h2>
+        {% if question.type == 'write' %}
+            <input question-id="{{question.id}}" class="question-write" type="text" placeholder="Sisesta vastus siia...">
+            <div question-id="{{question.id}}" class="question-choices">
+                {% for choice in choices %}
+                    <label style="display: none;" choiceId="{{choice.answer}}" isCorrect="{% if choice.is_correct %}true{% else %}false{%endif %}"></label>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div question-id="{{question.id}}" class="question-choices">
+                {% for choice in choices %}
+                    <label choiceId="{{choice.id}}" isCorrect="{% if choice.is_correct %}true{% else %}false{%endif %}"><input required name="question{{question.id}}" type="{% if question.type == 'one' %}radio{% elif question.type == 'multi' %}checkbox{% endif %}"> {{choice.answer}}<br></label>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <br>
+        <button question-id="{{question.id}}" class="filled question-submit-btn"><i class="material-icons">check</i>&nbsp; Vasta</button>        
+    </div>
+    <div class="question-card-back" hidden>
+        <h2 class="question-result" question-id="{{question.id}}"></h2>
+        <p question-id="{{question.id}}" style="color: rgba(var(--text-color), 0.8);" class="explanation" hidden>{{question.explanation}}</p>
+        <br>
+        {% if question.explanation|length > 0 %}
+            <button question-id="{{question.id}}" class="filled explanation-btn">Vaata selgitust</button>
+        {% endif %}
+        <button question-id="{{question.id}}" class="outlined try-again-btn">Proovi uuesti</button>
+
+    </div>
+</div>

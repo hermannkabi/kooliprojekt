@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_list_or_404, get_object_or_40
 from django.contrib.auth import authenticate, logout as django_logout, login, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.template.defaulttags import register
-from .models import Course, Lesson,LessonCompleted
+from .models import Course, Lesson,LessonCompleted, Question, QuestionChoice
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -151,3 +151,25 @@ def registerToCourse(request, id):
 
 def view_not_found(request, exception):
     return render(request, "404.html")
+
+
+def profile(request, username):
+    User = get_user_model()
+
+    user = get_object_or_404(User, username=username)
+
+    return render(request, "profile.html", {"user":user})
+
+
+def exercise(request, id):
+    question = get_object_or_404(Question, pk=id)
+
+    choices = get_list_or_404(QuestionChoice, question=question)
+
+    context = {}
+
+    context["question"] = question
+    context["choices"] = choices
+
+    print("Herer")
+    return render(request, "exercise.html", context)

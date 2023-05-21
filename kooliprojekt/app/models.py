@@ -19,18 +19,28 @@ class Lesson(models.Model):
     image = models.TextField(blank=True, default="https://previews.123rf.com/images/tupungato/tupungato1612/tupungato161200137/69249841-physics-lesson-hand-written-law-of-physics-equations-set-science-vector-illustration.jpg")
     onlyForAdmin = models.BooleanField(default=False)
     lessonNumber = models.PositiveSmallIntegerField(default=1)
-    
     def __str__(self):
         return self.title
 
 class LessonCompleted(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
-    user = models.ManyToManyField(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.lesson)
 
 class Question(models.Model):
     question = models.CharField(max_length=200)
+    description = models.TextField(blank=True, default="")
+    type = models.CharField(max_length=50, default="one")
+    explanation = models.TextField(default="")
     def __str__(self):
         return self.question
-    
+
+
+class QuestionChoice(models.Model):
+    answer = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.answer

@@ -1,3 +1,17 @@
+@media only screen and (max-width: 700px) {
+    .question{
+        display: block !important;
+        width: 90% !important;
+        max-width: 90% !important;
+        margin: 8px auto !important;
+    }
+
+    .question-left, .question-right{
+        float: none !important;
+    }
+}
+
+
 .lesson-content{
     text-align: center;
     font-size: 20px;
@@ -88,4 +102,25 @@ code.block{
     display: block;
     text-align: start;
     margin: 16px auto;
+}
+
+
+.question{
+    background-color: rgba(var(--primary-color), 0.2);
+    padding: 4px 16px;
+    text-align: start;
+    border-radius: 6px;
+    max-width: 40%;
+    margin: 8px;
+}
+
+.question-left{
+    float: left;
+    vertical-align:top;
+    padding-right: 24px;
+}
+
+.question-right{
+    float: right;
+    vertical-align:top;
 }

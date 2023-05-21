@@ -77,6 +77,7 @@ body{
 
 .navbar h1 {
     font-family: var(--title-font);
+    overflow-wrap: anywhere;
 }
 
 .navbar * {
@@ -250,7 +251,7 @@ input, textarea{
     margin-bottom: 6px;
     width: auto;
     color: rgb(var(--primary-color));
-    background: rgba(255, 255, 255, 0.2);
+    background: transparent;
     box-shadow: 0 4px 30px rgba(rgb(var(--background-color)), 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -542,6 +543,7 @@ dialog {
 .course > h3 {
     margin: 12px 8px;
     padding-bottom: 8px;
+    overflow-wrap: anywhere;
 
 }
 
@@ -569,6 +571,7 @@ dialog {
     /* justify-content: center; */
     align-items: center;
     overflow: hidden;
+    overflow-wrap: anywhere;
 }
 
 .lesson-link:hover{
