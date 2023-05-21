@@ -22,3 +22,5 @@ urlpatterns = [
     path('', include("app.urls")),
     path("", include("django.contrib.auth.urls")),
 ]
+
+handler404 = 'app.views.view_not_found'

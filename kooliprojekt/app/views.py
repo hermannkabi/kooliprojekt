@@ -147,3 +147,7 @@ def registerToCourse(request, id):
     course.kasutajad.add(request.user)
 
     return redirect("/")
+
+
+def view_not_found(request, exception):
+    return render(request, "404.html")

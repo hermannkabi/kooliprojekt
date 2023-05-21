@@ -188,13 +188,13 @@ button, .link-button{
 
 button:hover, .link-button:hover{
     opacity: 0.9;
-    box-shadow: 0px 0px 56px 26px rgb(var(--primary-color), 0.2);
+    box-shadow: 0px 0px 10px 10px rgb(var(--primary-color), 0.1);
     color: rgb(var(--secondary-text-color));
 
 }
 
 button:active, .link-button:active{
-    box-shadow: 0px 0px 72px 50px rgb(var(--primary-color), 0.2);
+    box-shadow: 0px 0px 20px 10px rgb(var(--primary-color), 0.2);
 }
 
 button:focus, .link-button:focus{
@@ -440,7 +440,12 @@ dialog {
     background-color: rgba(var(--background-color), 1);
     padding: 0px 8px;
     border-radius: 6px;
-    box-shadow: 0px 0px 76px 32px rgba(var(--shadow-color), 0.1);
+    box-shadow: 0px 0px 150px 8px rgba(var(--shadow-color), 0.1);
+    width: min(250px, 90%);
+}
+
+.account-popup h1,p {
+    overflow-wrap: anywhere;
 }
 
 
@@ -593,4 +598,12 @@ dialog {
 
 .add-content p {
     font-size: 20px;
+}
+
+.absolute-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
