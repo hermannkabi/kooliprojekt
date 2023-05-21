@@ -16,7 +16,7 @@ class Lesson(models.Model):
     title = models.CharField(max_length=200)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     lesson = models.CharField(max_length=200)
-    image = models.TextField()
+    image = models.TextField(blank=True, default="https://previews.123rf.com/images/tupungato/tupungato1612/tupungato161200137/69249841-physics-lesson-hand-written-law-of-physics-equations-set-science-vector-illustration.jpg")
     onlyForAdmin = models.BooleanField(default=False)
     lessonNumber = models.PositiveSmallIntegerField(default=1)
     

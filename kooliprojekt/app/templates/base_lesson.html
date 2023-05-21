@@ -26,7 +26,7 @@
         {% if not isComplete %}
         <form action="{% url 'finishLesson' id=lesson.id %}" method="post">
             {% csrf_token %}
-            <button onclick="finishLesson()" class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
+            <button class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
             
         </form>
         {% else %}

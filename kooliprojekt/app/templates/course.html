@@ -14,7 +14,7 @@
             <div class="lesson-link {% if lesson in completedLessons %}lesson-completed{% endif%}">
                 <img src="{{lesson.image}}" alt="{{lesson.title}}">
                 <div class="lesson-text">
-                    <h3><span style="color: rgb(var(--secondary-color));">{{lesson.lessonNumber}}. tund:</span> {{ lesson.title }} </h3>
+                    <h3><span style="color: darkgray;">{{lesson.lessonNumber}}. tund:</span> {{ lesson.title }} </h3>
                 {% if lesson in completedLessons %}
                     <i style="margin-left: 16px;" class="material-icons">check_circle</i>
                 {% endif%}

@@ -153,7 +153,8 @@ a > i {
 
 a:hover{
     background-color: rgba(var(--primary-color));
-    color: white;
+    color: rgb(var(--secondary-text-color));
+
     /* text-decoration: none; */
 }
 
@@ -188,6 +189,8 @@ button, .link-button{
 button:hover, .link-button:hover{
     opacity: 0.9;
     box-shadow: 0px 0px 56px 26px rgb(var(--primary-color), 0.2);
+    color: rgb(var(--secondary-text-color));
+
 }
 
 button:active, .link-button:active{

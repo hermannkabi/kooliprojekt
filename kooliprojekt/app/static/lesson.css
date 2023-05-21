@@ -81,9 +81,11 @@ blockquote > i::before{
 code{
     background-color: rgba(var(--secondary-color), 0.6);
     border-radius: 6px;
+    padding: 2px 4px;
 }
 
 code.block{
     display: block;
     text-align: start;
+    margin: 16px auto;
 }
