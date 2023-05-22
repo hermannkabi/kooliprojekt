@@ -61,7 +61,7 @@ body{
 .navbar{
     margin: 0;
     /* background-color: rgba(var(--primary-color), 0.95); */
-    background: rgba(var(--primary-color), 0.9);
+    background: rgba(var(--navbar-color), 0.9);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(6px);
@@ -255,6 +255,7 @@ input, textarea{
     box-shadow: 0 4px 30px rgba(rgb(var(--background-color)), 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    padding-left: 8px;
 }
 
 textarea{
@@ -283,11 +284,18 @@ input[type="checkbox"], input[type="radio"]{
     outline: none;
     margin-top: 8px;
     margin-bottom: 8px;
-    -ms-transform: scale(1.3); /* IE 9 */
-    -webkit-transform: scale(1.3); /* Chrome, Safari, Opera */
-    transform: scale(1.3);
-    margin-right: 8px;
+    -ms-transform: scale(1.7); /* IE 9 */
+    -webkit-transform: scale(1.7); /* Chrome, Safari, Opera */
+    transform: scale(1.7);
+    margin-right: 16px;
 }
+
+input[type="range"], input[type="range"]:focus, input[type="range"]:active{
+    display: block;
+    outline: none;
+    width: 100%;
+}
+
 
 
 label {
@@ -438,10 +446,10 @@ dialog {
     top: 75px;
     right: 8px;
     display: inline-block;
-    background-color: rgba(var(--background-color), 1);
+    background-color: rgba(var(--primary-color), .1);
     padding: 0px 8px;
     border-radius: 6px;
-    box-shadow: 0px 0px 150px 8px rgba(var(--shadow-color), 0.1);
+    box-shadow: 0px 0px 100px 16px rgba(var(--shadow-color), 0.2);
     width: min(250px, 90%);
 }
 

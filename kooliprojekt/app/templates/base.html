@@ -27,6 +27,7 @@
 
             <div class="options">
                 {% block options %}
+                    <a href="{% url 'ui' %}">UI</a>
                     <a href="{% url 'index' %}">Koduleht</a>
                 {% endblock %}
                 {% if user.is_authenticated %}

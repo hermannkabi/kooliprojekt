@@ -46,6 +46,7 @@
         }
     </style>
 
+
     <script>
         var align = "left";
         $(".question-load-div").each(async function (){
@@ -104,6 +105,18 @@
                     }else{
                         result = "👎 Vale vastus!";
                     }
+                }else if($("input[type='range'][question-id=" + questionId.toString() + "]").length){
+                    var correctMin = parseInt($("input[type='range'][question-id=" + questionId.toString() + "]").attr("correct-min"));
+                    var correctMax = parseInt($("input[type='range'][question-id=" + questionId.toString() + "]").attr("correct-max"));
+
+                    var answer = parseInt($("input[type='range'][question-id=" + questionId.toString() + "]").val());
+
+                    if(correctMin <= answer && answer <= correctMax){
+                        result = "🎉 Õige vastus!";
+                    }else{
+                        result = "👎 Vale vastus!";
+                    }
+
                 }else{
                     //Not write answer
                     if(checker(answers, correctAnswers)){
@@ -161,6 +174,9 @@
             });
 
             
+            $("input[type='range']").on("change mousemove", function (){
+                $(".range-value[question-id="+ $(this).attr("question-id") +"]").text($(this).val().toString());
+            });
         }, 1000);
 
     </script>

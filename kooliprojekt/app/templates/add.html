@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Lisa kursus</h1>
+
+{% if all_courses|length > 0 %}
+    <h1>Lisa kursus</h1>
+{% endif %}
+
 
 <div class="course-cards">
     {% for course in all_courses %}
@@ -13,7 +17,10 @@
         </a>
 
     {% empty %}
-        <p>Kursuseid, mida sa juba ei omaks, ei leitud!</p>
+        <div class="absolute-center">
+            <h1 class="title-font">Kursuseid ei leitud!</h1>
+            <p>Kursuseid, mida sa juba ei omaks, ei leitud!</p>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}

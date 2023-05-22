@@ -9,6 +9,9 @@
                     <label style="display: none;" choiceId="{{choice.answer}}" isCorrect="{% if choice.is_correct %}true{% else %}false{%endif %}"></label>
                 {% endfor %}
             </div>
+        {% elif question.type == "range" %}
+            <h1 class="range-value" question-id="{{question.id}}">50</h1>
+            <input type="range" question-id="{{question.id}}" min="0" max="100" correct-min="{{question.correct_min|default:'0'}}" correct-max="{{question.correct_max|default:'10'}}">
         {% else %}
             <div question-id="{{question.id}}" class="question-choices">
                 {% for choice in choices %}
