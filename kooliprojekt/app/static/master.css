@@ -293,7 +293,7 @@ input[type="checkbox"], input[type="radio"]{
 input[type="range"], input[type="range"]:focus, input[type="range"]:active{
     display: block;
     outline: none;
-    width: 100%;
+    width: min(300px, 100%);
 }
 
 
@@ -617,4 +617,30 @@ dialog {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.main-font{
+    font-family: var(--main-font) !important;
+}
+
+
+.profile-container{
+    width: max(30%, 300px);
+    margin: auto;
+    text-align: center;
+}
+
+.profile-data{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-data > p {
+    text-align: end;
+}
+
+.profile-data > h4{
+    text-align: start;
 }

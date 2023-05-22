@@ -49,20 +49,12 @@
 
     <script>
         var align = "left";
-        $(".question-load-div").each(async function (){
+        $(".question-load-div").each(function (){
             var id = $(this).attr("question-id");
 
             var url = "{% url 'exercise' id=12345 %}".replace(/12345/, id.toString());
 
-            await $(this).load(url, function (){
-                if(align === "left"){
-                    $(">.question", this).addClass("question-left");
-                    align = "right";
-                }else{
-                    $(">.question", this).addClass("question-right");
-                    align = "left";
-                }
-            });
+            $(this).load(url);
 
         });
         
@@ -156,15 +148,15 @@
                     $(this).text("Peida selgitus")
                 }else{
                     $(this).text("Vaata selgitust")
-
                 }
             });
 
             $(".try-again-btn").click(function (){
                 var questionId = $(this).attr("question-id");
-
                 $(".question-load-div[question-id=" + questionId.toString() + "] .question > .question-card-back").css("opacity", "0");
                 setTimeout(() => {
+                    $(".explanation-btn[question-id="+questionId+"]").text("Vaata selgitust!");
+
                     $(".question-load-div[question-id=" + questionId.toString() + "] .question > .question-card-back").css("display", "none");
                     $(".question-load-div[question-id=" + questionId.toString() + "] .question > .question-card-front").css("display", "block");
                     $(".explanation[question-id=" + questionId.toString() + "]").hide();

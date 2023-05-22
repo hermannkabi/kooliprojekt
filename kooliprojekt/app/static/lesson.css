@@ -110,17 +110,16 @@ code.block{
     padding: 4px 16px;
     text-align: start;
     border-radius: 6px;
-    max-width: 40%;
-    margin: 8px;
+    max-width: 100%;
+    margin: 16px auto;
 }
 
-.question-left{
+/* .question-left{
     float: left;
     vertical-align:top;
-    padding-right: 24px;
 }
 
 .question-right{
     float: right;
     vertical-align:top;
-}
+} */

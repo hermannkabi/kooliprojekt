@@ -1,6 +1,9 @@
 <div class="question" question-id="{{question.id}}">
     <div class="question-card-front">
         <p>{{question.description}}</p>
+        {% if question.image %}
+            <img src="{{question.image}}" style="width: 100%; object-fit: cover; max-height: 300px;" alt="">
+        {% endif %}
         <h2>{{question.question}}</h2>
         {% if question.type == 'write' %}
             <input question-id="{{question.id}}" class="question-write" type="text" placeholder="Sisesta vastus siia...">
@@ -10,7 +13,7 @@
                 {% endfor %}
             </div>
         {% elif question.type == "range" %}
-            <h1 class="range-value" question-id="{{question.id}}">50</h1>
+            <h1 class="range-value main-font" question-id="{{question.id}}">50</h1>
             <input type="range" question-id="{{question.id}}" min="0" max="100" correct-min="{{question.correct_min|default:'0'}}" correct-max="{{question.correct_max|default:'10'}}">
         {% else %}
             <div question-id="{{question.id}}" class="question-choices">
@@ -24,7 +27,7 @@
     </div>
     <div class="question-card-back" hidden>
         <h2 class="question-result" question-id="{{question.id}}"></h2>
-        <p question-id="{{question.id}}" style="color: rgba(var(--text-color), 0.8);" class="explanation" hidden>{{question.explanation}}</p>
+        <p question-id="{{question.id}}" style="color: rgba(var(--text-color), 0.8);" class="explanation" hidden>{{question.explanation|safe}}</p>
         <br>
         {% if question.explanation|length > 0 %}
             <button question-id="{{question.id}}" class="filled explanation-btn">Vaata selgitust</button>

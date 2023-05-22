@@ -32,8 +32,9 @@ class Question(models.Model):
     question = models.CharField(max_length=200)
     description = models.TextField(blank=True, default="")
     type = models.CharField(max_length=50, default="one")
+    # WARNING! This field is rendered as safe, meaning that putting HTML here is a really bad idea
     explanation = models.TextField(default="")
-
+    image = models.TextField(blank=True)
     # These are only effective, if type=range
     correct_min = models.PositiveSmallIntegerField(blank=True, default=0)
     correct_max = models.PositiveSmallIntegerField(blank=True, default=10)

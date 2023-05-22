@@ -11,6 +11,63 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Hei!</h1>
-    <p>Siia lehele tuleb kasutaja leht, kui leht on sisselogitud kasutajast, saab teatud andmeid ka muuta</p>
+    <div class="profile-container">
+        <h1 class="primary-color">Tere, {{user.username|title}}!</h1>
+        <br>
+        <div class="profile-data">
+            <h4>Kasutajanimi</h4>
+            <input style="display: none;" type="text" id="username-input" placeholder="Kasutajanimi">
+            <p class="editable-field">{{user.username|title}}</p>
+
+            <h4>E-post</h4>
+            <input style="display: none;" type="email" id="email-input" placeholder="E-posti aadress">
+            <p class="editable-field">{{user.email|default:"E-posti pole lisatud"}}</p>
+            <h4>Halduskonto</h4>
+            <p {% if user.is_staff %}style="color: green"{% endif %}>{{user.is_staff|yesno:'Jah, Ei'}}</p>
+
+            <h4>Administraatorkonto</h4>
+            <p {% if user.is_superuser %}style="color: green"{% endif %}>{{user.is_superuser|yesno:'Jah, Ei'}}</p>
+        </div>
+
+        <br><br>
+        <div class="button-group">
+            <button onclick="window.location.href = {% url 'logout' %}" class="outlined red"><i class="material-icons">logout</i>&nbsp; Logi välja</button>
+            &nbsp;<button id="edit-btn" class="outlined"><i class="material-icons">edit</i>&nbsp; Muuda andmeid</button>
+            <br><br><br><br>
+            <!-- <a class="" href="">Kustuta konto</a> -->
+        </div>
+        <div style="display: none;" class="edit-button-group">
+            <button class="filled" id="save-btn"><i class="material-icons">save</i>&nbsp; Salvesta</button>
+            &nbsp;<button id="back-btn" class="outlined">Tagasi</button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        $("#edit-btn").click(function (){
+            $(".button-group, .editable-field").hide();
+            $("#username-input").val("{{user.username}}");
+            $("#email-input").val("{{user.email}}");
+            $("input").show();
+            $(".edit-button-group").show();
+        });
+
+        $("#back-btn").click(function (){
+            $("input").hide();
+            $(".edit-button-group").hide();
+            $(".button-group, .editable-field").show();
+        });
+
+        $("#save-btn").click(function (){
+            var username = $("#username-input").val();
+            var email = $("#email-input").val().length <= 0 ? "none" : $("#email-input").val();
+
+            if(username.length < 30){
+                window.location.href = "{% url 'saveUserData' username=123 email=456 %}".replace("123", username).replace("456", email);
+            }
+
+        });
+    </script>
 {% endblock %}

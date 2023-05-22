@@ -153,12 +153,9 @@ def view_not_found(request, exception):
     return render(request, "404.html")
 
 
-def profile(request, username):
-    User = get_user_model()
-
-    user = get_object_or_404(User, username=username)
-
-    return render(request, "profile.html", {"user":user})
+@login_required
+def profile(request):
+    return render(request, "profile.html", {"user":request.user})
 
 
 def exercise(request, id):
@@ -173,3 +170,17 @@ def exercise(request, id):
 
     print("Herer")
     return render(request, "exercise.html", context)
+
+@login_required
+def saveUserData(request, username, email):
+    try:
+        user = request.user
+        user.username = username
+
+        if email != "none":
+            user.email = email
+
+        user.save()
+    except:
+        print("Do nothing!")
+    return redirect("profile")

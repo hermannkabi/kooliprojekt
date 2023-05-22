@@ -51,8 +51,9 @@
             <p class="secondary">{{user.email|default:"E-posti pole lisatud"}}</p>
             <br><br>
             <label><input type="checkbox" id="dark-theme-checkbox"> Tume teema?</label>
-            
-            <a href="{% url 'profile' username=user.username %}" class="link-button filled expanded">Minu konto</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="link-button filled expanded">Minu konto</a>
+            {% endif %}
             <button onclick="window.location.href = {% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</button>            
         </div>
     </div>
