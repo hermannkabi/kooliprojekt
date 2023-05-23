@@ -6,7 +6,7 @@ from .models import Course, Lesson,LessonCompleted, Question, QuestionChoice
 from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-
+import re, random, math
 
 @register.filter
 def get_item(dictionary, key):
@@ -157,18 +157,47 @@ def view_not_found(request, exception):
 def profile(request):
     return render(request, "profile.html", {"user":request.user})
 
+def generate_random_float(a, b, c):
+    random_int = random.randint(math.ceil(a / c), math.floor(b / c))
+    random_float = random_int * c
+    return int(random_float) if random_float.is_integer() else round(random_float, 2)
+
 
 def exercise(request, id):
     question = get_object_or_404(Question, pk=id)
+    choices = QuestionChoice.objects.filter(question=question)
 
-    choices = get_list_or_404(QuestionChoice, question=question)
+    pattern = r"##([\d.,]+)##"
 
     context = {}
 
     context["question"] = question
     context["choices"] = choices
+    context["show_round"] = False
 
-    print("Herer")
+
+    text = question.explanation + question.question + question.explanation
+    numbers = re.findall(pattern, text)
+    if len(numbers) > 0:
+        individual_numbers = numbers[0].split(',')
+        random_data = generate_random_float(float(individual_numbers[0]), float(individual_numbers[1]), float(individual_numbers[2]))
+        random_answer = eval(question.constant)
+        random_answer = int(random_answer) if random_answer.is_integer() else round(random_answer, 2)
+        question.question = re.sub(pattern, str(random_data).replace(".", ","), question.question)
+        question.description = re.sub(pattern, str(random_data).replace(".", ","), question.description)
+        question.explanation = re.sub(pattern, str(random_data).replace(".", ","), question.explanation)
+        question.explanation = question.explanation.replace("##answer##", str(random_answer).replace(".", ","))
+        correct_choice = QuestionChoice(answer=str(random_answer), is_correct=True)
+        correct_choice2 = QuestionChoice(answer=str(random_answer).replace(".", ","), is_correct=True)
+        question.min = 0
+        question.max = (random_answer // 100 + 1)*100
+        question.correct_min = math.floor(random_answer)
+        question.correct_max = math.ceil(random_answer)
+
+        context["choices"] = [correct_choice, correct_choice2]
+        context["show_round"] = True
+
+
     return render(request, "exercise.html", context)
 
 @login_required

@@ -60,8 +60,8 @@
         
         setTimeout(() => {
             
-            let checker = (arr, target) => target.every(v => arr.includes(v));
-            let someChecker = (arr, target) => target.some(v => arr.includes(v));
+            let checker = (arr, target) => target.every(v => arr.includes(v)) && target.length > 0;
+            let someChecker = (arr, target) => target.some(v => arr.includes(v)) && target.length > 0;
 
 
             $(".question-submit-btn").click(function (){
@@ -110,8 +110,9 @@
                     }
 
                 }else{
+
                     //Not write answer
-                    if(checker(answers, correctAnswers)){
+                    if(checker(correctAnswers, answers)){
                         result = "🎉 Õige vastus!";
                     }else if(someChecker(answers, correctAnswers)){
                         result = "😐 Pooleldi õige!";

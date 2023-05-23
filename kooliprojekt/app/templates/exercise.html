@@ -4,7 +4,11 @@
         {% if question.image %}
             <img src="{{question.image}}" style="width: 100%; object-fit: cover; max-height: 300px;" alt="">
         {% endif %}
-        <h2>{{question.question}}</h2>
+        <h2 class="{% if show_round and question.type != 'range' %}primary{% endif %}">{{question.question}}</h2>
+        {% if show_round and question.type != 'range' %}
+        <p style="font-size: 75%;" class="secondary">Vajadusel ümarda kahe komakohani</p>
+        {% endif %}
+
         {% if question.type == 'write' %}
             <input question-id="{{question.id}}" class="question-write" type="text" placeholder="Sisesta vastus siia...">
             <div question-id="{{question.id}}" class="question-choices">
@@ -13,8 +17,8 @@
                 {% endfor %}
             </div>
         {% elif question.type == "range" %}
-            <h1 class="range-value main-font" question-id="{{question.id}}">50</h1>
-            <input type="range" question-id="{{question.id}}" min="0" max="100" correct-min="{{question.correct_min|default:'0'}}" correct-max="{{question.correct_max|default:'10'}}">
+            <h1 style="display: inline;" class="range-value main-font" question-id="{{question.id}}">{% widthratio question.max|default:100 2 1 %}</h1> <p style="display: inline;" class="secondary">{{question.unit}}</p>
+            <input type="range" question-id="{{question.id}}" min="{{question.min|default:0}}" max="{{question.max|default:100}}" correct-min="{{question.correct_min|default:'0'}}" correct-max="{{question.correct_max|default:'10'}}">
         {% else %}
             <div question-id="{{question.id}}" class="question-choices">
                 {% for choice in choices %}

@@ -33,11 +33,15 @@ class Question(models.Model):
     description = models.TextField(blank=True, default="")
     type = models.CharField(max_length=50, default="one")
     # WARNING! This field is rendered as safe, meaning that putting HTML here is a really bad idea
-    explanation = models.TextField(default="")
+    explanation = models.TextField(default="", blank=True)
     image = models.TextField(blank=True)
     # These are only effective, if type=range
     correct_min = models.PositiveSmallIntegerField(blank=True, default=0)
     correct_max = models.PositiveSmallIntegerField(blank=True, default=10)
+    # This is used only when the data is randomized
+    # The content is simply Python code, that can access the random_data variable to make an equation
+    constant = models.CharField(default="random_data", max_length=255)
+    unit = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
         return self.question

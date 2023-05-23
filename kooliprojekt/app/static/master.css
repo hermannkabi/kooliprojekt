@@ -24,6 +24,7 @@
         left: 50% !important;
         transform: translateX(-50%);
     }
+
 }
 
 @media only screen and (max-width: 1400px) {
@@ -513,6 +514,12 @@ dialog {
 
 .mjx-chtml{
     font-size: 160% !important;
+    pointer-events: none;
+}
+
+.MJXc-display{
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .course-cards{
