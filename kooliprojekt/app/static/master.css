@@ -549,7 +549,7 @@ dialog {
     outline: var(--outline);
 }
 
-.course > img {
+.course .course-img-container, img {
     width: 100%;
     height: 150px;
     object-fit: cover;
@@ -650,4 +650,20 @@ dialog {
 
 .profile-data > h4{
     text-align: start;
+}
+
+
+.course-img-container{
+    position: relative;
+    display: inline-block;
+}
+
+.course-completion-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: lightgreen;
+    border-radius: 6px;
+    opacity: 0.9;
 }

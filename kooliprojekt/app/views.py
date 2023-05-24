@@ -14,6 +14,7 @@ def get_item(dictionary, key):
         return dictionary.get(key, "")
     except:
         return ""
+    
 
 
 # Create your views here.

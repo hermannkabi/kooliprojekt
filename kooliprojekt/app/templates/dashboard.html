@@ -10,13 +10,21 @@
         <span>{{message}}</span>
     </div>
     {% endif %}
+    <h1>Jätka neid tunde</h1>
+    <h1>Pooleliolevad kursused</h1>
+    <h1>Lõpetatud kursused</h1>
+
+
     <h1>Minu kursused</h1>
     <div class="course-cards">
         {% for course in courses reversed %}
             <a href="{% url 'course' id=course.id %}" class="no-style">
                 <div class="course">
-                    <img src="{{ course.image }}" alt="Pilt">
-                    <h3 style="padding-bottom: 16px;">{{course.title }}</h3>
+                    <div class="course-img-container">
+                        <img src="{{ course.image }}" alt="Pilt">
+                        <div class="course-completion-bar" style="width: 42%;"></div>
+                    </div>
+                    <h3 style="padding-bottom: 16px;">{{course.title }} <span class="secondary"> | 42% </span></h3>
                 </div>
             </a>
         {% empty %}
