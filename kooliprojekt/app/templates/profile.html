@@ -12,6 +12,12 @@
 
 {% block content %}
     <div class="profile-container">
+        {% if message %}
+        <div class="popup error" id="message-popup">
+            <span>{{message}}</span>
+        </div>
+        {% endif %}
+    
         <h1 class="primary-color">Tere, {{user.username|title}}!</h1>
         <br>
         <div class="profile-data">
@@ -69,5 +75,10 @@
             }
 
         });
+    </script>
+    <script>
+        setTimeout(() => {
+            $("#message-popup").click();
+        }, 5000);
     </script>
 {% endblock %}

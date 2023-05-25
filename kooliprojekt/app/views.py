@@ -156,7 +156,11 @@ def view_not_found(request, exception):
 
 @login_required
 def profile(request):
-    return render(request, "profile.html", {"user":request.user})
+    message = request.session["message"]
+
+    request.session["message"] = None
+
+    return render(request, "profile.html", {"user":request.user, "message":message})
 
 def generate_random_float(a, b, c):
     random_int = random.randint(math.ceil(a / c), math.floor(b / c))
@@ -212,5 +216,5 @@ def saveUserData(request, username, email):
 
         user.save()
     except:
-        print("Do nothing!")
+        request.session['message'] = "Andmeid ei saanud uuendada!"
     return redirect("profile")

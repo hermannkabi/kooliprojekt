@@ -15,7 +15,7 @@
     <h1>Lõpetatud kursused</h1>
 
 
-    <h1>Minu kursused</h1>
+    <h1>Kõik kursused</h1>
     <div class="course-cards">
         {% for course in courses reversed %}
             <a href="{% url 'course' id=course.id %}" class="no-style">
