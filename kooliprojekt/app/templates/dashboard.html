@@ -10,23 +10,37 @@
         <span>{{message}}</span>
     </div>
     {% endif %}
-    <h1>Jätka neid tunde</h1>
-    <h1>Pooleliolevad kursused</h1>
-    <h1>Lõpetatud kursused</h1>
+    {% if continue_these %}
+    <h1><i class="material-icons collapse-btn" cards-id="continue-these">expand_less</i> Jätka tunde <span class="secondary">{{continue_these|length}}</span></h1>
+    {% endif %}
+    <div class="course-cards" id="continue-these">
+        {% for lesson in continue_these reversed %}
+            <a href="{% url 'lesson' id=lesson.id %}" class="no-style">
+                <div class="course">
+                    <div class="course-img-container">
+                        <img src="{{ lesson.image }}" alt="Pilt">
+                    </div>
+                    <h3 style="padding-bottom: 16px;">{{ lesson.title }} <span class="secondary">| {{lesson.course.title}}</span></h3>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 
-
-    <h1>Kõik kursused</h1>
-    <div class="course-cards">
+    <h1><i class="material-icons collapse-btn" cards-id="courses">expand_less</i> Kõik minu kursused <span class="secondary">{{courses|length}}</span></h1>
+    <div class="course-cards" id="courses">
         {% for course in courses reversed %}
+        {% with progress=course|progress:user %}
             <a href="{% url 'course' id=course.id %}" class="no-style">
                 <div class="course">
                     <div class="course-img-container">
                         <img src="{{ course.image }}" alt="Pilt">
-                        <div class="course-completion-bar" style="width: {{ course|progress:user }};"></div>
+                        <div class="course-completion-bar" course_id="{{course.id}}" progress-width="{{ progress|get_item:'now' }}" previous-width="{{ progress|get_item:'previous' }}"></div>
                     </div>
-                    <h3 style="padding-bottom: 16px;">{{course.title }} <span class="secondary"> | {{ course|progress:user }} </span></h3>
+                    <h3 course-id="{{course.id}}" style="padding-bottom: 16px;">{{ course.title }} <span class="secondary"> | {{ progress|get_item:'now' }} </span></h3>
                 </div>
             </a>
+        {% endwith %}
+            
         {% empty %}
             <div>
                 <p class="primary">Sul pole veel ühtegi kursust!</p><br>
@@ -43,6 +57,46 @@
         setTimeout(() => {
             $("#message-popup").click();
         }, 5000);
+
+        $(".course-completion-bar").each(function (){
+            $(this).addClass("no-animation");
+            if({{animate_course|default:"null"}} == $(this).attr("course_id")){
+                $(this).width($(this).attr("previous-width"));
+                $(this).removeClass("no-animation");
+                setTimeout(() => {
+                    $(this).css("width", $(this).attr("progress-width"));
+                    if($(this).attr("progress-width") === "100%"){
+                        setTimeout(() => {
+                            $(this).addClass("course-completed");
+                            $("h3[course-id="+$(this).attr("course_id")+"]").addClass("completed-text");
+                        }, 500);
+                    }
+                }, 500);
+            }else{
+                $(this).css("width", $(this).attr("progress-width"));
+                if($(this).attr("progress-width") === "100%"){
+                    $(this).addClass("course-completed");
+                    $("h3[course-id="+$(this).attr("course_id")+"]").addClass("no-animation completed-text");
+                }
+            }
+            
+        });
+
+        
+    </script>
+
+    <script>
+        $(".collapse-btn").click(function (){
+            console.log($(this).css("transform"));
+            if ($(this).css("transform") !== "none"){
+                $(this).css("transform", "none");
+                $("#" + $(this).attr("cards-id")).animate({"height":"show", "opacity":"1"});
+
+            }else{
+                $(this).css("transform", "rotate(180deg)")
+                $("#" + $(this).attr("cards-id")).animate({"height":"hide", "opacity":"0"});
+            }
+        });
     </script>
 {% endblock %}
 

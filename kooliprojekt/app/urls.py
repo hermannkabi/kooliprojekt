@@ -15,7 +15,7 @@ urlpatterns = [
     # path("user/<str:username>", views.profile, name="profile"),
     path("profile", views.profile, name="profile"),
     path("save/user/data/<str:username>/<str:email>", views.saveUserData, name="saveUserData"),
-    
     path("exercise/<int:id>", views.exercise, name="exercise"),
+    path("lesson/<int:id>/remove", views.removeLesson, name="removeLesson")
     
 ]

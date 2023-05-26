@@ -54,8 +54,8 @@ img{
 }
 
 .lesson-end{
-    display: flex;
-    justify-content: center;
+    width: max-content;
+    margin: auto;
 }
 
 .lesson-content a{

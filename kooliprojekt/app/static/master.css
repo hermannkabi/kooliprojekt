@@ -469,7 +469,7 @@ dialog {
     top: 75px;
     right: 8px;
     display: inline-block;
-    background-color: rgba(var(--primary-color), .1);
+    background-color: rgba(var(--background-color), 1);
     padding: 0px 8px;
     border-radius: 6px;
     box-shadow: 0px 0px 100px 16px rgba(var(--shadow-color), 0.2);
@@ -681,6 +681,8 @@ dialog {
     display: inline-block;
 }
 
+
+
 .course-completion-bar{
     position: absolute;
     top: 0;
@@ -688,8 +690,27 @@ dialog {
     height: 100%;
     background-color: lightgreen;
     border-radius: 6px;
-    opacity: 0.5;
+    opacity: 0.8;
     /* Animation */
-    width: 0;
-    transition: width 200ms;
+    transition: all 500ms cubic-bezier(.39,.58,.57,1);
+    max-width: 100%;
+
+}
+
+.course-completed{
+    background-color: #FFD700;
+}
+
+.completed-text{
+    transition: color 500ms cubic-bezier(.39,.58,.57,1);
+    color: #FFD700;
+}
+
+.no-animation{
+    transition: none !important;
+}
+
+.collapse-btn{
+    transition: transform 200ms ease-in-out;
+    cursor: pointer;
 }

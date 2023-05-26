@@ -20,9 +20,11 @@ def progress(course, user):
     lessons_completed = LessonCompleted.objects.filter(Q(lesson__course = course) & Q(user = user))
     total_lessons = Lesson.objects.filter(course = course)
     if len(total_lessons) <= 0:
-        return "0%"
+        return {"now":"0%", "previous":"0%"}
     percent = round((len(lessons_completed)/len(total_lessons))*100)
-    return str(percent) + "%"
+    previous = max(round(((len(lessons_completed) - 1)/len(total_lessons))*100), 0)
+    return {"now":str(percent) + "%", "previous": str(previous) + "%"}
+
 
 # Create your views here.
 def index(request):
@@ -32,9 +34,25 @@ def index(request):
     courses=Course.objects.filter(kasutajad = request.user)
     context["courses"] = courses
     context["message"] = request.session.get("message", None)
+    context["animate_course"] = request.session.get("animate_course", None)
 
     #Clears the message so that it will not appear on refresh
     request.session["message"] = None
+    request.session["animate_course"] = None
+
+    continue_these = []
+    #Get lessons to continue
+    for course in courses:
+        lessons = Lesson.objects.filter(course=course)
+        completed = LessonCompleted.objects.filter(Q(user=request.user) & Q(lesson__course=course))
+
+        lesson  = next((x for x in lessons if len(completed.filter(lesson__id=x.id)) <= 0), None)
+        
+        if lesson != None:
+            continue_these.append(lesson)
+
+    context["continue_these"] = continue_these[:3]
+
     return render(request, "dashboard.html",context)
 
 
@@ -116,13 +134,17 @@ def lesson(request, id):
 
 @login_required
 def finishLesson(request, id):
-    lesson_completed = LessonCompleted(user = request.user, lesson = get_object_or_404(Lesson, pk=id))
+    lesson = get_object_or_404(Lesson, pk=id)
+    lesson_completed = LessonCompleted(user=request.user, lesson=lesson)
     lesson_completed.save()
+    request.session["animate_course"] = lesson.course.id
     return redirect("/")
 
 @login_required
 def addCourse(request):
     not_owned_by_user = Course.objects.all().exclude(kasutajad=request.user)
+    if not request.user.is_superuser:
+        not_owned_by_user = not_owned_by_user.filter(only_for_admin=False)
     context = {}
 
     context["all_courses"] = not_owned_by_user
@@ -228,3 +250,12 @@ def saveUserData(request, username, email):
     except:
         request.session['message'] = "Andmeid ei saanud uuendada!"
     return redirect("profile")
+
+
+def removeLesson(request, id):
+    lesson = get_object_or_404(Lesson, pk=id)
+    lesson_completed = get_object_or_404(LessonCompleted, Q(lesson=lesson) & Q(user=request.user))
+    lesson_completed.delete()
+
+    return redirect("/")
+

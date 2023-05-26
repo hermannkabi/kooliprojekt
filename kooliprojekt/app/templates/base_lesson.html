@@ -30,8 +30,8 @@
             
         </form>
         {% else %}
-            <i style="color: rgb(var(--secondary-color));">See tund on juba lõpetatud!</i>
-            
+            <a href="{% url 'index' %}" class="link-button filled"><i class="material-icons">arrow_back</i> &nbsp;  Tagasi</a> 
+            <button onclick="window.location.href = '{% url 'removeLesson' id=lesson.id %}'" class="outlined">Eemalda tehtute hulgast</button>            
         {% endif %}
     </div>
     <br><br>
