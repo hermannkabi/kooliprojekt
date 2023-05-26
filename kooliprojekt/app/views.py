@@ -191,8 +191,18 @@ def profile(request):
     request.session["message"] = None
 
     #Write additional user data code here
+    lessons_completed = len(LessonCompleted.objects.filter(user=request.user))
+    user_courses = Course.objects.filter(kasutajad=request.user)
 
-    return render(request, "profile.html", {"user":request.user, "message":message})
+    courses_completed = 0
+    for course in user_courses:
+        total_lesson_count = Lesson.objects.filter(course=course)
+        total_done_count = LessonCompleted.objects.filter(Q(lesson__course=course) & Q(user=request.user))
+        if len(total_done_count) >= len(total_lesson_count) and len(total_lesson_count) > 0:
+            print(course)
+            courses_completed += 1
+
+    return render(request, "profile.html", {"user":request.user, "message":message, "lessons_completed":lessons_completed, "courses_completed":courses_completed})
 
 def generate_random_float(a, b, c):
     random_int = random.randint(math.ceil(a / c), math.floor(b / c))

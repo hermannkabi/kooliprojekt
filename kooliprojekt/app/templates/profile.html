@@ -6,10 +6,6 @@
     <title>{{ user.username|title }} | Füüsika</title>
 {% endblock %}
 
-{% block title %}
-    <h1>{{ user.username|title }}</h1>
-{% endblock %}
-
 {% block content %}
     <div class="profile-container">
         {% if message %}
@@ -28,6 +24,11 @@
             <h4>E-post</h4>
             <input style="display: none;" type="email" id="email-input" placeholder="E-posti aadress">
             <p class="editable-field">{{user.email|default:"E-posti pole lisatud"}}</p>
+            <h4>Tunde lõpetatud</h4>
+            <p>{{ lessons_completed|default:'0' }}</p>
+            <h4>Kursuseid läbitud</h4>
+            <p>{{ courses_completed|default:'0' }}</p>
+
             <h4>Halduskonto</h4>
             <p {% if user.is_staff %}style="color: green"{% endif %}>{{user.is_staff|yesno:'Jah, Ei'}}</p>
 

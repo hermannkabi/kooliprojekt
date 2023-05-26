@@ -22,13 +22,13 @@
         {% endblock%}
     </div>
     <br><br><br>
+    <div class="popup error" id="cannotFinishLesson" hidden>
+        <span>Tundi ei saa lõpetada, sest ülesanded on õigesti tegemata</span>
+    </div>
     <div class="lesson-end">
         {% if not isComplete %}
-        <form action="{% url 'finishLesson' id=lesson.id %}" method="post">
-            {% csrf_token %}
-            <button class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
             
-        </form>
+            <button onclick="onFinishLesson()" class="filled"><i class="material-icons">check_circle</i> &nbsp;  Lõpeta tund</button>
         {% else %}
             <a href="{% url 'index' %}" class="link-button filled"><i class="material-icons">arrow_back</i> &nbsp;  Tagasi</a> 
             <button onclick="window.location.href = '{% url 'removeLesson' id=lesson.id %}'" class="outlined">Eemalda tehtute hulgast</button>            
@@ -42,11 +42,23 @@
         }
 
         .question-load-div{
-            transition: height 200ms ;
+            transition: height 200ms;
         }
     </style>
 
 
+    <script>
+        function onFinishLesson(){
+            if($(".question-undone").length){
+                $("#cannotFinishLesson").show();
+            }else{
+                $("#cannotFinishLesson").hide();
+                setTimeout(() => {
+                    window.location.href = '{% url 'finishLesson' id=lesson.id %}';
+                }, 200);
+            }
+        }
+    </script>
     <script>
         var align = "left";
         $(".question-load-div").each(function (){
@@ -54,7 +66,9 @@
 
             var url = "{% url 'exercise' id=12345 %}".replace(/12345/, id.toString());
 
-            $(this).load(url);
+            $(this).load(url, function (){
+                $(this).addClass("question-undone");
+            });
 
         });
         
@@ -94,6 +108,7 @@
                     // Write answer
                     if(correctAnswers.includes($(".question-write[question-id=" + questionId.toString() + "]").val().toLowerCase())){
                         result = "🎉 Õige vastus!";
+                        $(".question-load-div[question-id=" + questionId.toString() + "]").removeClass("question-undone");
                     }else{
                         result = "👎 Vale vastus!";
                     }
@@ -105,6 +120,7 @@
 
                     if(correctMin <= answer && answer <= correctMax){
                         result = "🎉 Õige vastus!";
+                        $(".question-load-div[question-id=" + questionId.toString() + "]").removeClass("question-undone");
                     }else{
                         result = "👎 Vale vastus!";
                     }
@@ -114,6 +130,7 @@
                     //Not write answer
                     if(checker(correctAnswers, answers)){
                         result = "🎉 Õige vastus!";
+                        $(".question-load-div[question-id=" + questionId.toString() + "]").removeClass("question-undone");
                     }else if(someChecker(answers, correctAnswers)){
                         result = "😐 Pooleldi õige!";
                     }else{
