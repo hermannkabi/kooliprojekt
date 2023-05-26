@@ -22,9 +22,9 @@
                 <div class="course">
                     <div class="course-img-container">
                         <img src="{{ course.image }}" alt="Pilt">
-                        <div class="course-completion-bar" style="width: 42%;"></div>
+                        <div class="course-completion-bar" style="width: {{ course|progress:user }};"></div>
                     </div>
-                    <h3 style="padding-bottom: 16px;">{{course.title }} <span class="secondary"> | 42% </span></h3>
+                    <h3 style="padding-bottom: 16px;">{{course.title }} <span class="secondary"> | {{ course|progress:user }} </span></h3>
                 </div>
             </a>
         {% empty %}

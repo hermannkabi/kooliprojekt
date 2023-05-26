@@ -15,7 +15,14 @@ def get_item(dictionary, key):
     except:
         return ""
     
-
+@register.filter
+def progress(course, user):
+    lessons_completed = LessonCompleted.objects.filter(Q(lesson__course = course) & Q(user = user))
+    total_lessons = Lesson.objects.filter(course = course)
+    if len(total_lessons) <= 0:
+        return "0%"
+    percent = round((len(lessons_completed)/len(total_lessons))*100)
+    return str(percent) + "%"
 
 # Create your views here.
 def index(request):
@@ -109,7 +116,8 @@ def lesson(request, id):
 
 @login_required
 def finishLesson(request, id):
-    request.session['message'] = 'Praegu pole backendi lisatud, aga muidu oleksin selle salvestanud!'
+    lesson_completed = LessonCompleted(user = request.user, lesson = get_object_or_404(Lesson, pk=id))
+    lesson_completed.save()
     return redirect("/")
 
 @login_required

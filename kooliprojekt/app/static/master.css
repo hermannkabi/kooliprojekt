@@ -537,10 +537,11 @@ dialog {
 .mjx-chtml{
     font-size: 160% !important;
     pointer-events: none;
+    overflow-y: none;
 }
 
 .MJXc-display{
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     overflow-y: hidden;
 }
 
@@ -687,5 +688,8 @@ dialog {
     height: 100%;
     background-color: lightgreen;
     border-radius: 6px;
-    opacity: 0.9;
+    opacity: 0.5;
+    /* Animation */
+    width: 0;
+    transition: width 200ms;
 }

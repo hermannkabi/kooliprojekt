@@ -22,7 +22,9 @@
                 <a class="no-style" href="/"><img src="{% static 'logo.png' %}" alt="" class="nav-logo"></a>
                 {% block title %}
                     <h1>Füüsika</h1>
+                    
                 {% endblock %}
+
             </div>
 
             <div class="options">
@@ -35,14 +37,12 @@
                 {% else %}
                     <a class="user-text" href="{% url 'login' %}"><i class="material-icons">login</i></a>
                 {% endif %}
-                
-
+            
             </div>
             <a id="mobile-hamburger"><i class="material-icons">menu</i></a>
 
         </div>
         <div class="mobile-options"></div>
-    
     </div>
     <div id="top-margin"></div>
     <div class="faded-background" id="faded-background" hidden>
@@ -55,6 +55,7 @@
                 <a href="{% url 'profile' %}" class="link-button filled expanded">Minu konto</a>
             {% endif %}
             <button onclick="window.location.href = {% url 'signout' %}" class="link-button outlined red expanded"><i class="material-icons">logout</i> Logi välja</button>            
+
         </div>
     </div>
 
