@@ -156,9 +156,11 @@ def view_not_found(request, exception):
 
 @login_required
 def profile(request):
+    #Message handling
     message = request.session["message"]
-
     request.session["message"] = None
+
+    #Write additional user data code here
 
     return render(request, "profile.html", {"user":request.user, "message":message})
 
