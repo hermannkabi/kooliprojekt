@@ -67,7 +67,7 @@
 
 /* BODY */
   
-body{
+body, html{
     background: rgb(var(--background-color));
     font-family: var(--main-font);
     margin: 4px 16px;
@@ -76,6 +76,7 @@ body{
     -webkit-transition: background-color 100ms;
     -o-transition: background-color 100ms;
     -moz-transition: background-color 100ms;
+    scroll-behavior: smooth;
 }
 
 
@@ -94,7 +95,6 @@ body{
     color: rgb(var(--secondary-text-color));
     width: 100%;
     padding: 8px 16px;
-    transition: height 100ms;
     z-index: 100;
 }
 
@@ -469,7 +469,7 @@ dialog {
     top: 75px;
     right: 8px;
     display: inline-block;
-    background-color: rgba(var(--background-color), 1);
+    background-color: rgba(var(--account-popup-color), 1);
     padding: 0px 8px;
     border-radius: 6px;
     box-shadow: 0px 0px 100px 16px rgba(var(--shadow-color), 0.2);

@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="{% static 'logo.png' %}">
 </head>
 <body>
+    {% block navbar %}
     <div class="navbar">
         <div class="navbar-content">
             <div>
@@ -29,11 +30,10 @@
 
             <div class="options">
                 {% block options %}
-                    <a href="{% url 'ui' %}">UI</a>
                     <a href="{% url 'index' %}">Koduleht</a>
                 {% endblock %}
                 {% if user.is_authenticated %}
-                    <a id="user-link" title="{{ user.username|title }}" class="user-text"><i class="material-icons">person</i> {{user.username | title}}</a>
+                    <a id="user-link" title="{{ user.username|title }}" class="user-text account-link"><i class="material-icons">person</i> {{user.username | title}}</a>
                 {% else %}
                     <a class="user-text" href="{% url 'login' %}"><i class="material-icons">login</i></a>
                 {% endif %}
@@ -44,6 +44,7 @@
         </div>
         <div class="mobile-options"></div>
     </div>
+    {% endblock %}
     <div id="top-margin"></div>
     <div class="faded-background" id="faded-background" hidden>
         <div class="account-popup">
@@ -68,6 +69,8 @@
    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> 
+    <script src="http://demos.flesler.com/jquery/scrollTo/js/jquery.scrollTo-min.js"></script>
+
     <script>
         function detectTheme(){
             var currentTheme = "light";
@@ -148,11 +151,14 @@
 
     <script>
         $(".popup").click(function (e){
-            $(this).animate({"height":"0", "opacity":"0"}, 500, function (){
-                setTimeout(() => {
-                    $(this).css("display", "none");
-                }, 100);
-            });
+            if(!$(this).hasClass("not-dismissable")){
+                $(this).animate({"height":"0", "opacity":"0"}, 500, function (){
+                    setTimeout(() => {
+                        $(this).css("display", "none");
+                    }, 100);
+                });
+            }
+            
         });
 
         // Here is the account popup logic
@@ -218,7 +224,7 @@
         });
 
 
-        $("#user-link").click(function (){
+        $(".account-link").click(function (){
             $(".faded-background").css("opacity", 0);
             $(".faded-background").css("display", "block");
             setTimeout(() => {
