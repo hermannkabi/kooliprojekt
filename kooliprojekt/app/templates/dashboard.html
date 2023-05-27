@@ -87,7 +87,6 @@
 
     <script>
         $(".collapse-btn").click(function (){
-            console.log($(this).css("transform"));
             if ($(this).css("transform") !== "none"){
                 $(this).css("transform", "none");
                 $("#" + $(this).attr("cards-id")).animate({"height":"show", "opacity":"1"});
