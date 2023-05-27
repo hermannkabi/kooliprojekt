@@ -11,8 +11,8 @@
     --shadow-color: 0, 0, 0;
     --highlight-color: #ABCDEF;
     --navbar-color: var(--primary-color);
-
-
+    --account-popup-color: 255, 255, 255;
+    --home-title-color: black;
     --title-font: "Bebas Neue";
     --main-font: "Atkinson Hyperlegible";
     --outline: 1px solid rgb(var(--primary-color));
@@ -31,6 +31,8 @@
     --shadow-color: 0, 0, 0;
     --highlight-color: #ABCDEF;
     --navbar-color: 32, 49, 80;
+    --account-popup-color: 12, 32, 61;
+    --home-title-color: white;
 
 
     --title-font: "Bebas Neue";

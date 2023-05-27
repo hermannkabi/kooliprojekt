@@ -26,6 +26,18 @@ def progress(course, user):
     return {"now":str(percent) + "%", "previous": str(previous) + "%"}
 
 
+@register.filter
+def replace(value, arg):
+    """
+    Replacing filter
+    Use `{{ "aaa"|replace:"a|b" }}`
+    """
+    if len(arg.split('|')) != 2:
+        return value
+
+    what, to = arg.split('|')
+    return value.replace(what, to)
+
 # Create your views here.
 def index(request):
     if not request.user.is_authenticated:
@@ -177,7 +189,7 @@ def registerToCourse(request, id):
     
     course.kasutajad.add(request.user)
 
-    return redirect("/")
+    return redirect("course", id=id)
 
 
 def view_not_found(request, exception):

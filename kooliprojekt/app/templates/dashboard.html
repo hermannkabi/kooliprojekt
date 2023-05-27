@@ -36,21 +36,18 @@
                         <img src="{{ course.image }}" alt="Pilt">
                         <div class="course-completion-bar" course_id="{{course.id}}" progress-width="{{ progress|get_item:'now' }}" previous-width="{{ progress|get_item:'previous' }}"></div>
                     </div>
-                    <h3 course-id="{{course.id}}" style="padding-bottom: 16px;">{{ course.title }} <span class="secondary"> | {{ progress|get_item:'now' }} </span></h3>
+                    <h3 course-id="{{course.id}}" style="padding-bottom: 16px;">{{ course.title }} <span class="secondary"> | {{ progress|get_item:'now'|replace:"100%|🏆" }} </span></h3>
                 </div>
             </a>
         {% endwith %}
             
         {% empty %}
             <div>
-                <p class="primary">Sul pole veel ühtegi kursust!</p><br>
                 <a href="{% url 'addCourse' %}" class="link-button filled"><i class="material-icons">add</i> Lisa kursus</a>
     
             </div>
         {% endfor %}
     </div>
-    <br><br><br>
-    <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
 
 
     <script>

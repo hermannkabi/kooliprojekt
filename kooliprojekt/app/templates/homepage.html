@@ -12,32 +12,104 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block head %}
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
     <title>Füüsika | Avaleht</title>
     {% endblock %}
 </head>
 <body>
-    {% block title %}
-        <h1>Koduleht</h1>
+    {% block navbar %}
+        <div class="home-navbar">
+            <img src="{% static 'logo.png' %}" alt="Logo">
+            <h2>Füüsika</h2>
+        </div>
     {% endblock %}
-    {% block options %}
-        <a href="{% url 'login' %}">Logi sisse</a>
-        <a href="{% url 'register' %}">Loo konto</a>
-    {% endblock %}
+
 
     {% block content %}
-        <h1 class="title-font primary">Tere tulemast!</h1>
-        <p class="secondary">See on füüsika äpp</p>
-        <a href="{% url 'register' %}" class="link-button filled">Loo konto</a>
-        <a href="{% url 'login' %}" class="link-button outlined">Logi sisse</a>
-        <a href="{% url 'ui' %}" class="link-button outlined">Vaata UI komponente</a>
-        
+        <div class="top-spacer"></div>
+        <div class="container">
+            <section>
+                <h1 class="main-heading">Füüsika on raske,<br> <span class="primary-color">Äpinimi</span> mitte</h1>
+                <br><br><br>
+                <p class="subheader">Muuda füüsika <span class="primary-color" id="changing-text">lihtsaks!</span></p>
+                <a href="#begin" class="link-button filled">Alusta kohe</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'login' %}">Logi sisse</a>
+                <img id="main-photo" src="{% static 'mobile.png' %}" alt="">    
+            </section>
+            <section id="why-us">
+                <br>
+                <h1 class="main-heading">Miks <span class="primary-color">Äpinimi?</span></h1>
+                <br><br><br>
+                <div class="reasons-div">
+                    <div class="reason">
+                        <div class="reason-titles">
+                            <h1 class="mega-number">01</h1>
+                            <h1 class="reason-title">Mugav kasutada</h1>
+                        </div>
+                        <p>Äpinimi on uus, moodne ja töötab hästi kõigil seadmetel, ka telefonis</p>
+                    </div>
+                    <div class="reason">
+                        <div class="reason-titles">
+                            <h1 class="mega-number">02</h1>
+                            <h1 class="reason-title">Õiged materjalid</h1>
+                        </div>
+                        <p>Äpinimi sisaldab Eesti gümnaasiumites õpetavat materjali</p>
+                    </div>
+                    <div class="reason">
+                        <div class="reason-titles">
+                            <h1 class="mega-number">03</h1>
+                            <h1 class="reason-title">Pidevad uuendused</h1>
+                        </div>
+                        <p>Nii äpp ise kui ka selle sisu uuenevad pidevalt vastavalt tunnis õpitule</p>
+                    </div>
+                    <div class="reason">
+                        <div class="reason-titles">
+                            <h1 class="mega-number">04</h1>
+                            <h1 class="reason-title">Usaldusväärne</h1>
+                        </div>
+                        <p>Lehe valmimisse on kaasatud tugevad valdkonnaeksperdid</p>
+                    </div>
+                </div>
+            </section>
+            <section id="begin">
+                <br>
+                <h1 class="main-heading">Valmis <span class="primary-color">alustama?</span></h1>
+                <br><br><br>
+                <p>Suur rõõm sind siin näha! Loodame, et sinu kasutuskogemus Äpinimega saab olema täiuslik!</p>
+                <a class="link-button filled" href="{% url 'register' %}">Loo uus konto</a>
+            </section>
+        </div>
 
-        <br><br><br>
-        <p>Seda lehte näed sellepärast, et pole sisselogitud!</p>
+        <script src="https://cdn.jsdelivr.net/gh/jcubic/jquery.rotate@0.4.0/jquery.rotate.js"></script>
+        <script>
+            const innerHeight = $(document).innerHeight();
+            const innerWidth = $(document).innerWidth();
 
-        <br><br><br>
-        <p class="secondary">NB! Arendusversioon. See leht läheb paremaks!</p>
-    
+            $(document).mousemove(function (event){
+                const randomRotateX = (event.pageY - (innerHeight / 2)) / (innerHeight / 2) * 30;
+                const randomRotateY = (- event.pageX + (innerWidth / 2)) / (innerWidth / 2) * 20;
+
+                $("#main-photo").css("transform", `rotateX(${randomRotateX}deg) rotateY(${randomRotateY}deg)`);
+
+            });
+            
+        </script>
+
+        <script>
+            //  Change the word
+            const words = ["lihtsaks", "lõbusaks", "arusaadavaks", "ilusaks"];
+            var selected = 0;
+
+            setInterval(() => {
+                $("#changing-text").animate({"opacity":"0"}, 500, function (){
+                    selected ++;
+                    $("#changing-text").text(words[selected % words.length] + "!");
+                    setTimeout(() => {
+                        $("#changing-text").animate({"opacity":"1"}, 500);
+                    }, 300);
+                });
+            }, 3000);
+        </script>
     {% endblock %}
 
 

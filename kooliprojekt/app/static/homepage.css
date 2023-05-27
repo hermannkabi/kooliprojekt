@@ -1,0 +1,160 @@
+@media only screen and (max-width: 1300px) {
+    #main-photo{
+        float: right;
+        right: 25px !important;
+    }
+
+    #begin{
+        max-width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #main-photo{
+        display: none !important;
+    }
+
+    .top-spacer{
+        height: 50px !important;
+    }
+
+    .reason{
+        margin-inline: 8px;
+    }
+
+    .reason:nth-child(even) .reason-titles{
+        justify-content: start !important;
+        text-align: left !important;
+
+    }
+    .reason:nth-child(even) p{
+        text-align: left !important;
+    }
+
+}
+
+p{
+    font-size: 30px;
+}
+
+.home-navbar{
+    margin: 0;
+    /* background-color: rgba(var(--primary-color), 0.95); */
+    background: rgba(var(--background-color), 0.9);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(6px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: var(--home-title-color);
+    width: 100%;
+    padding: 8px 16px;
+    z-index: 100;    
+}
+
+.home-navbar > img{
+    max-height: 50px;
+    max-width: 50px;
+    display: inline;
+    vertical-align: middle;
+}
+
+.home-navbar > h2 {
+    margin-left: 16px;
+    display: inline;
+    vertical-align: middle;
+}
+
+.top-spacer{
+    height: 150px;
+}
+
+.main-heading{
+    font-size: 75px;
+    font-weight: normal;
+}
+
+.container{
+    margin: 16px;
+}
+
+section{
+    min-height: 100vh;
+}
+
+.subheader{
+    font-size: 30px;
+}
+
+.link-button{
+    height: 60px;
+    padding: 24px 50px;
+    font-size: 20px;
+}
+
+a{
+    font-size: 20px;
+}
+
+#main-photo{
+    position: absolute;
+    top: 175px;
+    right: 200px;
+    transform: rotate(14deg);
+    max-height: 600px;
+    -webkit-box-shadow: 0px 0px 82px -23px rgba(var(--primary-color),1);
+    -moz-box-shadow: 0px 0px 82px -23px rgba(var(--primary-color),1);
+    box-shadow: 0px 0px 82px -23px rgba(var(--primary-color),1);
+    /* transform-style: preserve-3d; */
+    transition: transform 300ms linear;
+}
+
+#changing-text{
+    white-space: nowrap;
+}
+
+.mega-number{
+    font-size: 200px;
+    color: rgb(var(--secondary-color));
+    margin: 0;
+    font-weight: normal;
+}
+
+.reason-titles{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.reason-title{
+    font-size: 50px;
+    font-weight: normal;
+    position: absolute;
+    left: 0;
+}
+
+.reason p{
+    font-size: 30px;
+}
+
+.reason{
+    margin-bottom: 100px;
+}
+
+.reason:nth-child(even){
+    text-align: right;
+}
+
+.reason:nth-child(even) .reason-titles{
+    justify-content: end;
+    align-items: center;
+}
+
+.reason:nth-child(even) .reason-titles > h1 {
+    right: 0;
+}
+
+
+#begin{
+    max-width: 60%;
+}
