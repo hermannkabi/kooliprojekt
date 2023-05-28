@@ -129,6 +129,7 @@ a{
     box-shadow: 0px 0px 82px -23px rgba(var(--primary-color),1);
     /* transform-style: preserve-3d; */
     transition: transform 300ms linear;
+    pointer-events: none;
 }
 
 #changing-text{
