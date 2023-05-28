@@ -48,3 +48,7 @@
     margin-bottom: 0;
 }
 
+.wrong-input{
+    color: rgb(var(--red-color));
+    outline-color: rgb(var(--red-color));
+}

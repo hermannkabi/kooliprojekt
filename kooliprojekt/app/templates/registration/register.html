@@ -25,27 +25,27 @@
 
     {% block content %}
         <div class="main-container">
+            {% if form.errors %}
+            <div class="popup error">Midagi läks valesti. Mõned asjaolud, mis võivad seda põhjustada: <ul><li>Parool peab olema 8 tähemärki</li><li>Paroolid ei kattu</li><li>Kasutajanimi võib olla võetud</li></ul></div>
+            {% endif %}
             <div class="login-title-div">
                 <img class="login-logo" src="{% static 'logo.png' %}" alt="Füüsika">
                 <br>
                 <h1 class="title-font">Loo konto</h1>
             </div>
-            {% for error in form.errors %}
-            <p></p>
-
-                <div class="popup error">{{form.errors|get_item:error}}</div>
-            {% endfor %}
+            
+            
 
             <div class="login-container">
                 <div class="login-form-container">
                     <form action="" method="post">
                         {% csrf_token %}
-                        <input value="{{ form.cleaned_data|get_item:'username'}}" class="login-input" type="text" placeholder="Kasutajanimi" name="username">
-                        <input value="{{ form.cleaned_data|get_item:'email'}}" class="login-input" type="email" placeholder="E-posti aadress" name="email">
+                        <input value="{{ form.cleaned_data|get_item:'username'}}" class="login-input" type="text" placeholder="Kasutajanimi" name="username" id="username">
+                        <input value="{{ form.cleaned_data|get_item:'email'}}" class="login-input" type="email" placeholder="E-posti aadress" name="email" id="email">
                         
                         <br><br>
-                        <input value="{{ form.cleaned_data|get_item:'password1'}}" class="login-input" type="password" placeholder="Parool" name="password1">
-                        <input value="{{ form.cleaned_data|get_item:'password2'}}" class="login-input" type="password" placeholder="Korda parooli" name="password2">
+                        <input value="{{ form.cleaned_data|get_item:'password1'}}" class="login-input" type="password" placeholder="Parool" name="password1" id="password1">
+                        <input value="{{ form.cleaned_data|get_item:'password2'}}" class="login-input" type="password" placeholder="Korda parooli" name="password2" id="password2">
 
                         <br>
                         <button class="filled login-button">Loo konto</button>
@@ -53,6 +53,13 @@
                 </div>
                 <a class="login-bottom-link" href="{% url 'login' %}"><i class="material-icons">login</i> Logi sisse</a>
             </div>
+
+            
+            <script>
+                {% for error in form.errors %}
+                    $("#{{error}}").addClass("wrong-input");
+                {% endfor %}
+            </script>
         </div>
     {% endblock %}
 

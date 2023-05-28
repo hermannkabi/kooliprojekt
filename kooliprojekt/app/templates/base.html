@@ -190,18 +190,19 @@
             }
             
         }
-        $(window).on("resize", detectScreenSizeChange);
 
         detectScreenSizeChange();
+
+        new ResizeObserver(detectScreenSizeChange).observe(document.querySelector(".navbar"));
 
         // Responsive navbar
         $("#mobile-hamburger").click(function (){
             if($(".navbar .mobile-options").css("display")  != "none"){
                 // The navbar is opened
-                $(".navbar .mobile-options").css("display", "none");
+                $(".navbar .mobile-options").animate({"height":"hide"});
 
             }else{
-                $(".navbar .mobile-options").css("display", "block");
+                $(".navbar .mobile-options").animate({"height":"show"});
                 
             }
         });

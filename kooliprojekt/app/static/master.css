@@ -406,6 +406,10 @@ img:hover{
     margin-right: 8px;
 }
 
+.popup ul, .popup ol{
+    text-align: start;
+}
+
 
 .error{
     color: rgb(var(--red-color));
@@ -524,8 +528,12 @@ dialog {
     display: none;
     padding-right: 4px;
     cursor: pointer;
-    color: rgb(var(--secondary-text-color));
+    color: rgb(var(--navbar-text-color));
     margin-right: 24px;
+}
+
+#mobile-hamburger:hover{
+    color: rgb(var(--secondary-text-color));
 }
 
 .mobile-options{
@@ -534,7 +542,7 @@ dialog {
 
 .mobile-options * {
     text-align: start;
-    color: rgb(var(--secondary-text-color));
+    color: rgb(var(--navbar-text-color));
     padding-left: 0;
 }
 

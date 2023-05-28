@@ -21,15 +21,15 @@
     {% block content %}
     
         <div class="main-container">
-            
+            {% if form.errors %}
+                <div class="popup error">Vale kasutajanimi või parool!</div>
+            {% endif %}
             <div class="login-title-div">
                 <img class="login-logo" src="{% static 'logo.png' %}" alt="Füüsika">
                 <br>
                 <h1 class="title-font">Logi sisse</h1>
             </div>
-            {% if form.errors %}
-                <div class="popup error">Vale kasutajanimi või parool!</div>
-            {% endif %}
+            
             <div class="login-container">
                 <div class="login-form-container">
                     <form action="{% url 'login' %}" method="post">
@@ -37,13 +37,19 @@
                         <input value="{{form.cleaned_data|get_item:'username'}}" class="login-input" type="text" placeholder="Kasutajanimi" name="username">
                         
                         <input class="login-input" type="password" placeholder="Parool" name="password">
-                        <br><br>
+                        <br><br><br>
                         <button class="filled login-button">Logi sisse</button>
                     </form>
                 </div>
                 <a class="login-bottom-link" href="{% url 'register' %}"><i class="material-icons">person_add</i> Loo konto</a>
             </div>
         </div>
+        <script>
+            {% for error in form.errors %}
+                $("input[type={{error}}]").addClass("wrong-input");
+            {% endfor %}
+        </script>
+        
     {% endblock %}
 
 </body>
