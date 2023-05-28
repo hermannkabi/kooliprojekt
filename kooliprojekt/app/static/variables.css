@@ -12,11 +12,11 @@
     --highlight-color: #ABCDEF;
     --navbar-color: var(--primary-color);
     --account-popup-color: 255, 255, 255;
-    --home-title-color: black;
+    --navbar-text-color: black;
     --title-font: "Bebas Neue";
     --main-font: "Atkinson Hyperlegible";
     --outline: 1px solid rgb(var(--primary-color));
-
+    --gold-color: 212,175,55;
     --mobile-width: 600px;
 }
 
@@ -32,7 +32,8 @@
     --highlight-color: #ABCDEF;
     --navbar-color: 32, 49, 80;
     --account-popup-color: 12, 32, 61;
-    --home-title-color: white;
+    --navbar-text-color: white;
+    --gold-color: 255,215,0;
 
 
     --title-font: "Bebas Neue";

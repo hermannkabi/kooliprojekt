@@ -13,29 +13,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block head %}
     <link rel="stylesheet" href="{% static 'homepage.css' %}">
+    <link rel="stylesheet" href="{% static 'lesson.css' %}">
     <title>Füüsika | Avaleht</title>
     {% endblock %}
 </head>
 <body>
-    {% block navbar %}
-        <div class="home-navbar">
-            <img src="{% static 'logo.png' %}" alt="Logo">
-            <h2>Füüsika</h2>
-        </div>
+    {% block title %}
+        <h1>Füüsika</h1>
     {% endblock %}
-
 
     {% block content %}
         <div class="top-spacer"></div>
         <div class="container">
             <section>
-                <h1 class="main-heading">Füüsika on raske,<br> <span class="primary-color">Äpinimi</span> mitte</h1>
+                <h1 class="main-heading"><span class="first appear"><span class="primary-color">Äpinimega</span> lendad</span><br> <span class="second appear"> füüsikas kõrgelt!</span></h1>
+                <!-- <h1 class="main-heading">Füüsika on raske,<br> <span class="primary-color">Äpinimi</span> mitte</h1> -->
                 <br><br><br>
-                <p class="subheader">Muuda füüsika <span class="primary-color" id="changing-text">lihtsaks!</span></p>
-                <a href="#begin" class="link-button filled">Alusta kohe</a>&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'login' %}">Logi sisse</a>
-                <img id="main-photo" src="{% static 'mobile.png' %}" alt="">    
+                <div class="fourth appear">
+                    <p class="subheader">Muuda füüsika <span class="primary-color" id="changing-text">lihtsaks!</span></p>
+                    <a href="#begin" class="link-button filled">Vaata edasi</a>&nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'login' %}">Logi sisse</a>
+    
+                </div>
+                <img id="main-photo" class="third appear" src="{% static 'mobile.png' %}" alt="">    
             </section>
+            </div>
+            <div class="rocket" id="rocket">
+                <img src="{% static 'rocket.png' %}" alt="">
+            </div>
             <section id="why-us">
                 <br>
                 <h1 class="main-heading">Miks <span class="primary-color">Äpinimi?</span></h1>
@@ -78,7 +83,53 @@
                 <p>Suur rõõm sind siin näha! Loodame, et sinu kasutuskogemus Äpinimega saab olema täiuslik!</p>
                 <a class="link-button filled" href="{% url 'register' %}">Loo uus konto</a>
             </section>
+            <div id="footer">
+            </div>
         </div>
+
+        <script>
+
+            var megaNumberObserver = new IntersectionObserver(function(entries) {
+                // isIntersecting is true when element and viewport are overlapping
+                // isIntersecting is false when element and viewport don't overlap
+                entries.forEach(function (entry){
+                    if(entry.isIntersecting === true){
+                        entry.target.style.opacity = 1;
+                    }
+                });
+                }, { threshold: [0] });
+            
+            document.querySelectorAll(".mega-number").forEach(function (el){
+                megaNumberObserver.observe(el);
+            });
+            
+
+
+            function AnimateRotate(d){
+                var elem = $(".question-load-div");
+
+                $({deg: 0}).animate({deg: d}, {
+                    duration: 1500,
+                    step: function(now){
+                        elem.css({
+                            transform: "rotateX(" + now + "deg)"
+                        });
+                    }
+                });
+            }
+            $(".question-load-div").each(function (){
+                var id = $(this).attr("question-id");
+
+                var url = "{% url 'exercise' id=12345 %}".replace(/12345/, id.toString());
+
+                console.log(url);
+
+                $(this).load(url, function (){
+                    $(this).addClass("question-undone");
+                });
+            });
+        </script>
+        <script src="{% static 'js/exercise-logic.js' %}"></script>
 
         <script src="https://cdn.jsdelivr.net/gh/jcubic/jquery.rotate@0.4.0/jquery.rotate.js"></script>
         <script>
@@ -106,9 +157,26 @@
                     $("#changing-text").text(words[selected % words.length] + "!");
                     setTimeout(() => {
                         $("#changing-text").animate({"opacity":"1"}, 500);
-                    }, 300);
+                    }, 100);
                 });
-            }, 3000);
+            }, 5000);
+        </script>
+
+
+        <script>
+            var observer = new IntersectionObserver(function(entries) {
+            // isIntersecting is true when element and viewport are overlapping
+            // isIntersecting is false when element and viewport don't overlap
+            if(entries[0].isIntersecting === true && !entries[0].target.classList.contains("rocket-flown")){
+                console.log('Element has just become visible in screen');
+                entries[0].target.classList.add("rocket-flown");
+                setTimeout(() => {
+                    entries[0].target.remove();
+                }, 3000);
+            }
+            }, { threshold: [0] });
+
+            observer.observe(document.querySelector(".rocket"));
         </script>
     {% endblock %}
 
