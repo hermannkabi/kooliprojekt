@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>hello</h1>
+<div class="course-cards" id="courses">
+{% for course in f %}
+{% with progress=course|progress:user %}
+<a href="{% url 'course' id=course.id %}" class="no-style">
+    <div class="course">
+        <div class="course-img-container">
+            <img src="{{ course.image }}" alt="Pilt">
+            <div class="course-completion-bar" course_id="{{course.id}}" progress-width="{{ progress|get_item:'now' }}" previous-width="{{ progress|get_item:'previous' }}"></div>
+        </div>
+        <h3 course-id="{{course.id}}" style="padding-bottom: 16px;">{{ course.title }} <span class="secondary"> | {{ progress|get_item:'now'|replace:"100%|🏆" }} </span></h3>
+    </div>
+</a>
+{% endwith %}
+{% endfor %}
+</div>
+{% endblock %}
