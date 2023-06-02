@@ -17,6 +17,10 @@ urlpatterns = [
     path("profile", views.profile, name="profile"),
     path("save/user/data/<str:username>/<str:email>", views.saveUserData, name="saveUserData"),
     path("exercise/<int:id>", views.exercise, name="exercise"),
-    path("lesson/<int:id>/remove", views.removeLesson, name="removeLesson")
+    path("lesson/<int:id>/remove", views.removeLesson, name="removeLesson"),
+    path("profile/manage", views.manageCourses, name="manageCourses"),
+    path("profile/manage/<int:id>", views.manageCourse, name="manageCourse"),
+    path("remove/<int:id>", views.removeCourse, name="removeCourse"),
+
     
 ]

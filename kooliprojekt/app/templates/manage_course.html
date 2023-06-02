@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{f.title}}</h1>
+<form action="{% url 'removeCourse' id=f.id %}" method = "POST">
+    {% csrf_token %}
+    <button class="red filled">Eemalda kursus</button>
+</form>
+
+{% endblock %}

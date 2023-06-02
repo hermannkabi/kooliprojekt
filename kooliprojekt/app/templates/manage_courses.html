@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>hello</h1>
 <div class="course-cards" id="courses">
 {% for course in f %}
 {% with progress=course|progress:user %}
-<a href="{% url 'course' id=course.id %}" class="no-style">
+<a href="{% url 'manageCourse' id=course.id %}" class="no-style">
     <div class="course">
         <div class="course-img-container">
             <img src="{{ course.image }}" alt="Pilt">

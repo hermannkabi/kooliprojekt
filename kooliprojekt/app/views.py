@@ -281,3 +281,21 @@ def removeLesson(request, id):
 
     return redirect("/")
 
+def manageCourses(request):
+    f = Course.objects.filter(kasutajad=request.user)
+    return render(request, "manage_courses.html", {"f":f})
+
+
+def manageCourse(request, id):
+    course = get_object_or_404(Course, pk = id, kasutajad=request.user)
+    return render(request, "manage_course.html", {"f":course})
+
+
+def removeCourse(request, id):
+    if request.method == "POST":
+        course = get_object_or_404(Course, pk = id, kasutajad=request.user)
+        course.kasutajad.remove(request.user)
+        lessons_completed = get_list_or_404(LessonCompleted, user=request.user, lesson__course=course)
+        for x in lessons_completed:
+            x.delete()
+    return redirect("/")
