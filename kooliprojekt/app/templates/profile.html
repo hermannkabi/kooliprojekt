@@ -42,7 +42,9 @@
             &nbsp;<button id="edit-btn" class="outlined"><i class="material-icons">edit</i>&nbsp; Muuda andmeid</button>
             &nbsp;<a class="link-button outlined" href="{% url 'manageCourses' %}">Halda kursuseid</a>
             <br><br><br><br>
-            <!-- <a class="" href="">Kustuta konto</a> -->
+            
+            <button onclick="deleteAccount()" class="red filled" href=""><i class="material-icons">delete</i>&nbsp; Kustuta konto</button>
+            
         </div>
         <div style="display: none;" class="edit-button-group">
             <button class="filled" id="save-btn"><i class="material-icons">save</i>&nbsp; Salvesta</button>
@@ -52,6 +54,13 @@
 
     </div>
 
+    <script>
+        function deleteAccount(){
+            if (confirm("Kas sa oled kindel, et soovid oma kasutaja jäädavalt kustutada?")){
+                window.location.href = "{% url 'deleteAccount' %}";
+            }
+        }
+    </script>
 
     <script>
         $("#edit-btn").click(function (){

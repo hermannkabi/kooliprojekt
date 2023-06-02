@@ -299,3 +299,7 @@ def removeCourse(request, id):
         for x in lessons_completed:
             x.delete()
     return redirect("/")
+
+def deleteAccount(request):
+    request.user.delete()
+    return redirect("/")
