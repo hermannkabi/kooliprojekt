@@ -189,7 +189,7 @@ def registerToCourse(request, id):
     
     course.kasutajad.add(request.user)
 
-    return redirect("course", id=id)
+    return redirect("/course/add", id=id)
 
 
 def view_not_found(request, exception):
@@ -295,10 +295,10 @@ def removeCourse(request, id):
     if request.method == "POST":
         course = get_object_or_404(Course, pk = id, kasutajad=request.user)
         course.kasutajad.remove(request.user)
-        lessons_completed = get_list_or_404(LessonCompleted, user=request.user, lesson__course=course)
+        lessons_completed = LessonCompleted.objects.filter(Q(user=request.user) & Q(lesson__course=course))
         for x in lessons_completed:
             x.delete()
-    return redirect("/")
+    return redirect("/profile/manage")
 
 def deleteAccount(request):
     request.user.delete()
