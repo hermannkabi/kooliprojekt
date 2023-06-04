@@ -1,0 +1,21 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+<p>Olekuparameetrid on rõhk, ruumala ja <b>absoluutne</b> temperatuur.</p>
+<p>Kasutame eelmises tunnis tuletatud valemit koos ühe rõhu valemiga. Paneme need kaks valemit kokku.</p>
+$$ E_{k} = \frac{3}{2}kT, $$
+$$ p = \frac{2}{3}n\overline{E_{k}} $$
+
+$$ p = nKT \Rightarrow p = \frac{N}{V}kT  |  * \frac{V}{T} $$
+
+$$ \frac{pV}{T} = Nk $$
+
+<p>Ühe mooli korral \(N = N_{A}\). Kui \(\nu = 1 mol \), siis \( pp = N_{A}k = 8,31 \). Seda arvu tähistame tähega \(R\) ja seda kutsutakse universaalseks gaasikonstandiks. Nüüd saame, et:</p>
+$$ \frac{pV}{T} = \nu R \Rightarrow \frac{pV}{T} = \frac{m}{M}R $$
+
+<blockquote>
+    <p>$$\frac{pV}{T} = \frac{m}{M}R$$</p>
+</blockquote>
+<p>See ongi kuulus oleku võrrand. See on seniajani õpitud võrranditest/valemitest keerukaim, kuna sisaldab lausa 5 erinevat muutujat lisaks konstandile.</p>
+{% endblock %}

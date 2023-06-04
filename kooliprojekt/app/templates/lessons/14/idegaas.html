@@ -1,0 +1,47 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+    <p>Selles tunnis käsitleme ideaalse gaasi definitsiooni ja paari valemit, mis sellest tulenevad.</p>
+    <h2>Ideaalne gaas</h2>
+    <p>Esiteks, ideaalne gaas on mudel. See tähendab, et nagu nimigi ütleb, ei ole reaalses elus gaasis selliste omadustega ja seega ei käitu täpselt samamoodi. Füüsikas aga ongi oluline teha lihtsad mudelid ja siis vajadusel neid täiendada. Niisiis, jõuame ideaalse gaasi tingimusteni:</p>
+    <ol>
+        <li>Loeme molekulid punktmassideks</li>
+        <li>Molekulide omavahelised põrked puuduvad</li>
+        <li>Põrked on absoluutselt elastsed</li>
+        <li>Kõik molekulid liiguvad ühesuguse keskmise kiirusega</li>
+        <li>Molekulidevahelised jõud puuduvad</li>
+    </ol>
+    <p>Järgnevalt vaatleme anumat otsapindalaga \(S\). Leiame ühe molekuli jõu pinnale. Selleks meenutame impulsi kursust, kus leidsime, et \(F\Delta t = \Delta p \Rightarrow F = \frac{\Delta p}{\Delta t} \). Lisaks sellele teame ka, et ühe molekuli impulsi muut abs. elastsel põrkel on kahekordne esialgne impulss \(\Delta p = 2m_{0}\overline{v} \), kusjuures \(\overline{v}\) on molekuli keskmine kiirus</p>
+    $$ F_{1} = \frac{2m_{0}\overline{v}}{\Delta t} $$
+    <p>Väga oluline tähelepanek, mida nüüd teha, on see, et pinnaga saaks aja \(\Delta t\) jooksul põrkuda ainult need molekulid, mis asuvad ruumalas \( S\overline{v}\Delta t \), sest \(\overline{v}\Delta t\) on kaugus, mille molekul aja jooksul läbib ja tekib korrapärase kujundi ruumala valem (põhjapindala * kõrgus).</p>
+    <p>Järgnevalt leiame, mitu osakest selles ruumalas paikneb. Eeldame, et osakesed on gaasis ühtlaselt jaotunud. Kasutades valemit \(n = \frac{N}{V}\), saame, et \(N = nV\). Asendame siia just leitud ruumala:</p>
+    $$ N_{k} = nS\overline{v}\Delta t $$
+    <p>Nüüd teeme veel ühe lihtsustuse. Ütleme, et molekul saab liikuda kuues suunas. Sellisel juhul saab pinnani jõuda kuuendik neist molekulidest, mis ruumalas paiknevad, sest ka nende suunad on ühtlaselt jaotunud.</p>
+    $$ N = \frac{1}{6}N_{k} $$
+    <p>Oleme lõpusirgel. Kuna eesmärgiks on leida rõhk, siis kasutame rõhu põhivalemit \(p=\frac{F}{S}\). Asendame sinna varem leitud suurused.</p>
+
+    $$ p = \frac{F}{S} = \frac{\frac{1}{6}N_{k} * F_{1}}{S} = \frac{ \frac{1}{6}* nS\overline{v}\Delta t * 2m_{0}\overline{v}}{S \Delta t} = \frac{1}{3}* n * m_{0}\overline{v^2} $$
+
+    $$ p = \frac{1}{3}nm_{0}\overline{v^2} $$
+
+    <p>Suutsime siduda kõik varem tuletatud suurused ühte ilusasse valemisse. Siinkohal tasub meelde jätta, et siin valemis on kiiruste ruutude keskmine (1 \( \frac{m^2}{s^2} \)), olemas on ka ruutkeskmine <i>kiirus</i> (\(1 \frac{m}{s}\)), mis on lihtsalt ruutjuur kiiruste ruutude keskmisest.</p>
+
+    <p>Näitame ära veel ühe kasuliku seose. Selleks ühendame kineetilise energia vastavastatud valemiga. Selleks on mugav ära kasutada suurust \(\overline{v^2}\), mis on mõlemas valemis sees. Kirjutame igaks juhuks mõlemad valemid välja ka.</p>
+
+    $$ E_{k} = \frac{m\overline{v^2}}{2} \Rightarrow \overline{v^2} = \frac{2E_{k}}{m} $$
+
+    $$ p = \frac{1}{3}nm_{0}\overline{v^2} $$
+
+    <p>Asendame \(\overline{v^2}\): </p>
+    $$ p = \frac{1}{3}nm_{0} \frac{2E_{k}}{m} = \frac{2}{3}nm_{0} \frac{E_{k}}{m} $$
+    <p>Valemis on sees suurus \(\frac{m_{0}}{m}\), mis on meile tundmatu. Aga seda tagurpidi vaadates näeksime, et see on aine massi ja ühe aineosakese suhe. See omakorda on aga aineosakeste kogus. Seega \(\frac{m_{0}}{m} = \frac{1}{N}\). Asendame selle valemisse: </p>
+
+    $$ p = \frac{2}{3}n\frac{E_{k}}{N} $$
+
+    <p>Nüüd huvitab meid suhe \(\frac{E_{k}}{N}\). Loogiliselt on see tegelikult ju ühe osakese keskmine kineetiline energia, sest see on kogu kineetiline energia ja osakeste arvu jagatis. Nüüd saab valem oma lõpliku kuju.</p>
+
+    $$ p = \frac{2}{3}n\overline{E_{k}} $$
+
+
+{% endblock %}

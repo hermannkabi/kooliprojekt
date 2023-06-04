@@ -1,0 +1,21 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+<p>Isoprotsessi käigus ei muutu üks olekuparameetritest ja vastav parameeter taandub gaasi olekuvõrrandist välja. Oluline on teada põhiseost:</p>
+$$ \frac{p_{1}V_{1}}{T_{1}} = \frac{p_{2}V_{2}}{T_{2}}$$
+<h2>1. Isotermiline protsess ( \( \Delta T = 0 \))</h2>
+<p>Kuna temperatuur ei muutu, taandub see oleku võrrandist lihtsalt välja.</p>
+$$ p_{1}V_{1} = p_{2}V_{2} $$
+<p>Sellise isoprotsessi joone kuju on graafikutel pT ja VT sirge ja pV graafikul hüperbool.</p>
+<img src="https://www.eigenplus.com/wp-content/uploads/2022/12/isothermal_process-1024x576.png" alt="">
+<h2>2. Isobaariline protsess ( \( \Delta p = 0 \))</h2>
+<p>Nüüd taandub võrrandist välja rõhk, ehk saame järgmise seose</p>
+$$ \frac{V_{1}}{T_{1}} = \frac{V_{2}}{T_{2}} $$
+<p>Isobaar on pT ja PV graafikul paralleelne x-teljega ja VT graafikul sirge, mille üheks punktiks on (0;0)</p>
+
+<h2>3. Isohooriline protsess ( \( \Delta V = 0 \))</h2>
+<p>Isohoorilise protsessi võrrand on järgmine:</p>
+$$ \frac{p_{1}}{T_{1}} = \frac{p_{2}}{T_{2}} $$
+<p>Graafikud on sarnased isobaarilise protsesiga.</p>
+{% endblock %}
