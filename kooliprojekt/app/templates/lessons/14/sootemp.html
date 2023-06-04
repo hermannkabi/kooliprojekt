@@ -1,0 +1,28 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+    <p>Temperatuur on füüsikaline suurus, mis iseloomustab keha soojuslikku seisundit. Keha soojuslikku seisundit saab muuta kahel viisil:</p>
+    <ol>
+        <li>soojusülekannet tehes <br>
+            <ul>
+                <li>konvektsiooni abil</li>
+                <li>soojuskiirguse abil</li>
+                <li>soojusjuhtivuse abil</li>
+            </ul>
+        </li>
+        <li>tehes keha kallal mehaanilist tööd</li>
+    </ol>
+    <p>Defineerime ka kaks mõistet: </p>
+    <ul>
+        <li>keha siseenergia - kõikide aineosakeste kineetiliste ja potentsiaalsete energiate summa</li>
+        <li>soojushulk - siseenergia kogus, mille keha saab või annab ära soojusülekande käigus</li>
+    </ul>
+    <p>Tekib uus mõiste - absoluutne temperatuur. Ilmneb, et on olemas temperatuur, kus aineosakesed on paigal, ehk madalaim teoreetiliselt võimalik temperatuur. Selle temperatuuriskaala nimi on Kelvini skaala, tähis T, ühik kelvin = 1K</p>
+    <p><b>NB! Kelvin ei ole kraadidega, st on vale öelda 1 kraadi Kelvinit.</b></p>
+    <p>Temperatuur on aineosakeste kulgliikumise keskmine energia. Siit saame uue valemi.</p>
+    $$ E_{k} = \frac{3}{2}kT, $$
+
+    <p>kus k on Boltzmanni konstant (\(k=1.38*10^{-23} \frac{J}{K}\)).</p>
+
+{% endblock %}
