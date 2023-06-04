@@ -1,0 +1,23 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+    <h1 class="primary">Tere tulemast!</h1>
+    <p class="secondary">Oled jõudnud kursusesse "Impulss"</p>
+    <br>
+    <p>Selles kursuses õpime, mis on impulss ja impulsimoment ja kuidas neid ülesannetes kasutada. Käesolevas tunnis õpime ära impulsi definitsiooni.</p>
+    <blockquote>
+        <p>Impulss ehk liikumishulk on keha massi ja kiirusvektori korrutis.</p>
+    </blockquote>
+    <p>Sellest definitsioonist lähtub, et impulss on vektoriaalne suurus, mis on samasihiline kiirusvektoriga, sest arvuga korrutamisel vektori siht ju ei muutu. Märgime ära ka impulsi definistioonvalemi:</p>
+    $$ \vec{p} = m\vec{v} $$
+    <p>Tegelikkuses peab impulssvektor olema lausa samasuunaline kiirusvektoriga, sest mass ei saa ju negatiivne olla.</p>
+    <img src="https://opik.fyysika.ee/media/img/exp/id-1554.v-0.w-260.jpg" alt="">
+    <p>Valemist ilmneb, et suur impulss võib olla kahte tüüpi kehadel: suure massi või suure kiirusega. Laeva impulss on suur, sest kuigi kiirus on väike, on selle mass väga suur. Samamoodi on ka kuuli impulss suur, kuigi mass on tühiselt väike. Järelikult on impulss seotud jõuga ja seega Newtoni II valemiga.</p>
+    $$ F = m\vec{a} = m \frac{\vec{v} - \vec{v_{0}}}{\Delta t} = \frac{m\vec{v} - m\vec{v_{0}}}{\Delta t} = \frac{\vec{p} - \vec{p_{0}}}{\Delta t} $$
+    <p>Korrutades \(\Delta t\)-ga läbi ja teades, et \(\vec{p} - \vec{p_{0}} = \Delta p\), saame impulsi teema ühe olulisima valemi:</p>
+    $$ F \Delta t = \Delta p $$
+    <p>See valem ütleb meile, et keha impulsimuut on võrdne talle mõjuva <i>keskmise</i> jõu ja selle mõjumisaja korrutisega. Seda valemit kasutatakse muideks ka kvantmehaanikas.</p>
+    <p>Teades impulsi definitsiooni ja valemeid, ürita lahendada allolev ülesanne.</p>
+    <div class="question-load-div" question-id="7"></div>
+{% endblock %}

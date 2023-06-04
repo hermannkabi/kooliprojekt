@@ -10,7 +10,7 @@
         {% endif %}
 
         {% if question.type == 'write' %}
-            <input question-id="{{question.id}}" class="question-write" type="text" placeholder="Sisesta vastus siia...">
+            <input question-id="{{question.id}}" class="question-write" type="text" placeholder="Sinu vastus... {% if question.unit %}({{question.unit}}){%endif%}">
             <div question-id="{{question.id}}" class="question-choices">
                 {% for choice in choices %}
                     <label style="display: none;" choiceId="{{choice.answer}}" isCorrect="{% if choice.is_correct %}true{% else %}false{%endif %}"></label>

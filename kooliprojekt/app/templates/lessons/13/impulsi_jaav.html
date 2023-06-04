@@ -1,0 +1,22 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+    <p>Selles lühikeses tunnis õpime ühte kõige olulisemat jäävusseadust füüsikas. Selleks on muidugi impulsi jäävuse seadus. Saame teada, mis on impulsi jäävuse seadus ja kuidas ja miks seda kasutada.</p>
+    <p>Alustame lihtsalt definitsioonist. Impulsi jäävuse seadus väidab, et</p>
+    <blockquote>
+        <p>Kehade süsteemi impulss on jääv, kui sellele ei mõju väliseid jõude.</p>
+    </blockquote>
+    <p>Kuidas aga sellist väidet tõestada? Alustada tuleb Newtoni III seadusest. Kaks keha mõjutavad üksteist võrdsete, kuid vastassuunaliste jõududega.</p>
+    $$ \vec{F_{1}} = - \vec{F_{2}} $$
+    <p>Esimesest tunnist mäletame, et jõud on lihtsalt impulsi muutumise kiirus ( \( F = \frac{\Delta \vec{p}}{\Delta t} \) ). Seega saame järgneva valemi:</p>
+    $$ \frac{\Delta \vec{p}_{1}}{\Delta t_{1}} = -\frac{\Delta \vec{p}_{2}}{\Delta t_{2}} $$
+    <p>Aga et ilmselgelt \(\Delta t_{1} = \Delta t_{2} \), kuna kehad mõjutavad teineteist samal ajavahemikul, siis saame lihtsalt öelda, et \(\Delta t = \Delta t_{1} = \Delta t_{2} \) ja võrrandi sellega läbi korrutada.</p>
+    $$ \Delta \vec{p}_{1} = - \Delta \vec{p}_{2} \Rightarrow \Delta \vec{p}_{1} + \Delta \vec{p}_{2} = 0$$
+    <p>Nüüd selle tunni kõige toredam koht: kuna ülevalolev kujutab endast mõlema keha impulsside muutude summat, siis võime muudu piltlikult öeldes "sulgude ette" tuua.</p>
+    $$ \Delta (\vec{p}_{1} + \vec{p}_{2}) = 0 \Rightarrow m_{1}\vec{v_{1}} + m_{2}\vec{v_{2}} = 0 $$
+    <blockquote>
+        <p>\(m_{1}\vec{v_{1}} + m_{2}\vec{v_{2}} = 0\)</p>
+    </blockquote>
+    <p>Olemegi nüüd ära näidanud impulsi jäävuse seaduse tuletuskäigu. Selle valemi kasutamine on hädavajalik näiteks põrkeülesannetes, kus saab selle abil leida kehade erinevaid suurusi. Täpsemalt õpime seadust kasutama juba järgmises tunnis.</p>
+{% endblock %} 

@@ -124,9 +124,8 @@ def lesson(request, id):
 
     context = {}
 
-    lesson = get_object_or_404(Lesson, pk=id)
-
-    if not lesson.course.kasutajad.contains(request.user) or lesson.onlyForAdmin and not request.user.is_superuser:
+    lesson = get_object_or_404(Lesson, id=id)
+    if not lesson.course.kasutajad.contains(request.user) or (lesson.onlyForAdmin and not request.user.is_superuser):
         request.session["message"] = "Sul ei ole õigust sellele lehele ligi pääseda"
         return redirect("/")
 
@@ -240,7 +239,7 @@ def exercise(request, id):
     if len(numbers) > 0:
         individual_numbers = numbers[0].split(',')
         random_data = generate_random_float(float(individual_numbers[0]), float(individual_numbers[1]), float(individual_numbers[2]))
-        random_answer = eval(question.constant)
+        random_answer = float(eval(question.constant))
         random_answer = int(random_answer) if random_answer.is_integer() else round(random_answer, 2)
         question.question = re.sub(pattern, str(random_data).replace(".", ","), question.question)
         question.description = re.sub(pattern, str(random_data).replace(".", ","), question.description)
