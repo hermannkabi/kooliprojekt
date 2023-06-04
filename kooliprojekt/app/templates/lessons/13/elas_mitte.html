@@ -1,0 +1,22 @@
+{% extends 'base_lesson.html' %}
+{% load static %}
+
+{% block lesson %}
+    <p>Selles tunnis õpime, kuidas lahendada ülesandeid teemal elastne ja mitteelastne põrge.</p>
+    <p>Esiteks, mis üldse on põrge. Põrkeks nimetatakse üksteise suhtes liikuvate kehade kokkupuutel toimuvat lühiajalist vastastikust mõjumist. Põrgetele on iseloomulik vastastikmõju lühike kestus ning jõudude ja kiirenduste suured väärtused, mida on sageli raske mõõta. Oluline on aga üks põrgete omadus:</p>
+    <blockquote>
+        <p>Kõikide põrgete puhul kehtib impulsi jäävuse seadus.</p>
+    </blockquote>
+    <p>Elastse põrke korral kehade koguenergia põrke käigus ei muutu ja pärast põrget eemaluvad kehad üksteisest. Mitteelastne põrke puhul aga toimub risti vastupidine: kehad jäävad üksteise külge kinni ja moodustavad liitkeha. Oluline on, et <b>mõlemat tüüpi põrgetel kehtib impulsi jäävuse seadus</b>.</p>
+    <div class="question-load-div" question-id="8"></div>
+    <p>Proovime nüüd lahendada mõne ülesande. <b>Oletame, et põrkavad kaks keha massidega 2kg ja 3kg. Esimese keha kiirus enne põrget on 10 m/s, teisel 6 m/s. Leiame liitkeha kiiruse pärast mitteelastset põrget.</b></p>
+    <p>Sellise ülesande lahendamiseks kasutame impulsi jäävuse seadust. Valime telje sedasi, et positiivne suund jääks esimese keha liikumise suunda. Seega esimese keha impulss enne põrget on </p>
+    $$\vec{p_{1}} = m_{1}\vec{v_{1}} = 2*10 = 20 \frac{kg*m}{s} $$
+    <p>Teise keha impulsi saab arvutada samamoodi, aga oluline on tähele panna, et kiirus on negatiivne, kuna valisime telje esimese keha kiiruse jaoks:</p>
+    $$\vec{p_{2}} = m_{2}\vec{v_{2}} = 3*(-6) = -18 \frac{kg*m}{s} $$
+    <p>Seega ilmneb, et pärast põrget on liitkeha impulss \( p = 20 + (-18) = 2 \frac{kg*m}{s} \). Seega liigub liitkeha esimese keha liigutud suunas. Nüüd on lihtne arvutada ka kiirus:</p>
+    $$ \vec{p} = m\vec{v} \Rightarrow \vec{v} = \frac{\vec{p}}{m} = \frac{p}{m_{1} + m_{2}} = \frac{2}{5} = 0,4 \frac{m}{s} $$
+    <p>Seega liiguvad kehad nüüd esimese keha esialgses suunas kiirusega 0,4 m/s. Nägime, et impulsi jäävuse seadust on võimalik kasutada, et sellised ülesandeid väga lihtsasti lahendada. Proovi nüüd ise sarnane ülesanne lahendada.</p>
+    <div class="question-load-div" question-id="9"></div>
+
+{% endblock %} 

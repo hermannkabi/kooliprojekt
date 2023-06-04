@@ -74,6 +74,7 @@ blockquote{
     font-family: "Lora", serif;
     color: rgb(var(--secondary-color));
     margin-bottom: 60px;
+    quotes: "“" "”" "“" "”";
 }
 
 blockquote::before{
