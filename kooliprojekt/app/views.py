@@ -28,10 +28,6 @@ def progress(course, user):
 
 @register.filter
 def replace(value, arg):
-    """
-    Replacing filter
-    Use `{{ "aaa"|replace:"a|b" }}`
-    """
     if len(arg.split('|')) != 2:
         return value
 
@@ -55,8 +51,9 @@ def index(request):
     continue_these = []
     #Get lessons to continue
     for course in courses:
-        lessons = Lesson.objects.filter(course=course)
+        lessons = Lesson.objects.filter(course=course).order_by("lessonNumber")
         completed = LessonCompleted.objects.filter(Q(user=request.user) & Q(lesson__course=course))
+
 
         lesson  = next((x for x in lessons if len(completed.filter(lesson__id=x.id)) <= 0), None)
         
