@@ -254,3 +254,7 @@ a{
     background-color: rgba(var(--primary-color),1);
     height: 50px;
 }
+
+.comment {
+    color: #6A9955;
+}

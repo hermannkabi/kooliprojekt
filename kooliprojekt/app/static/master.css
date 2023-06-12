@@ -726,3 +726,7 @@ dialog {
     transition: transform 200ms ease-in-out;
     cursor: pointer;
 }
+
+.comment {
+    color: #6A9955;
+}
